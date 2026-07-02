@@ -42,7 +42,7 @@
   nav a{color:var(--white); font-size:15px; font-weight:500; opacity:0.95; transition:opacity .2s;}
   nav a:hover{opacity:0.7;}
   @media (max-width:720px){ nav ul{gap:22px;} nav a{font-size:13px;} }
-  @media (max-width:560px){ nav ul{display:none;} }
+  @media (max-width:768px){ nav{display:none;} }
 
   /* DROPDOWN */
   .has-dropdown{display:flex; align-items:center; gap:5px; cursor:default;}
@@ -146,7 +146,7 @@
   }
 
   .principles{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px;
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px;
   }
   .principle{
     background:#F5F8FC;
@@ -154,8 +154,11 @@
     border-radius:14px;
     padding:32px 26px;
     transition:transform .2s, box-shadow .2s;
+    font:inherit; text-align:left; cursor:pointer;
   }
   .principle:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(21,45,99,0.1); }
+  .principle:focus-visible{outline:3px solid var(--blue-bright); outline-offset:4px;}
+  .principle:last-child{grid-column:2;}
   .principle .num{
     font-family:var(--font-display); font-size:13px; font-weight:700; color:var(--blue-bright);
     letter-spacing:1px;
@@ -165,6 +168,31 @@
     color:var(--navy); line-height:1.3;
   }
   .principle p{font-size:13.5px; line-height:1.6; color:#586878;}
+
+
+  .popup{display:none; position:fixed; z-index:1000; inset:0; overflow:auto; background:rgba(3,12,28,.72); padding:32px 20px;}
+  .popup.is-open{display:block;}
+  .popup-content{position:relative; background:#fff; width:min(900px,100%); margin:0 auto; padding:clamp(28px,5vw,56px); border-radius:18px; box-shadow:0 24px 80px rgba(0,0,0,.28);}
+  .popup-content h2{font-family:var(--font-display); color:var(--navy); line-height:1.25; font-size:clamp(24px,4vw,36px); text-align:center; margin:0 40px 28px;}
+  .popup-content p{font-size:15px; line-height:1.8; color:#3C4A5C; margin:0 0 20px;}
+  .popup-content strong{color:var(--navy);}
+  .popup-content #image-container{text-align:center; margin:28px auto;}
+  .popup-content img{display:block; width:min(90%,680px) !important; height:auto; margin:0 auto; border-radius:12px;}
+  .popup-content figcaption{font-size:13px; color:#687789; margin-top:10px;}
+  .close{position:absolute; top:16px; right:20px; width:44px; height:44px; border:0; border-radius:50%; background:#EDF3FA; color:var(--navy); font-size:30px; line-height:1; cursor:pointer;}
+  body.popup-open{overflow:hidden;}
+  @media (max-width:900px){
+    .principles{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .principle:last-child{grid-column:1 / -1; width:calc((100% - 24px)/2); justify-self:center;}
+  }
+  @media (max-width:600px){
+    .about{padding:72px 5vw;}
+    .principles{grid-template-columns:1fr;}
+    .principle:last-child{grid-column:auto; width:100%;}
+    .popup{padding:14px;}
+    .popup-content{padding:54px 22px 28px;}
+    .popup-content h2{margin:0 0 24px;}
+  }
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -208,48 +236,191 @@
 
   <section class="about" id="tentang">
     <div class="about-head">
-      <span class="eyebrow">TENTANG</span>
       <h2>Apa itu Ocean Literacy?</h2>
       <p>Ocean Literacy adalah pemahaman tentang pengaruh laut terhadap manusia, dan pengaruh manusia terhadap laut. Tujuh prinsip esensial berikut menjadi dasar dari setiap kegiatan yang kami jalankan.</p>
     </div>
     <div class="principles">
-      <div class="principle">
+      <button class="principle" type="button" data-popup="popup1" aria-haspopup="dialog">
         <span class="num">01</span>
         <h3>Satu Laut, Banyak Ciri</h3>
         <p>Bumi memiliki satu lautan besar dengan beragam karakteristik di tiap wilayahnya.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup2" aria-haspopup="dialog">
         <span class="num">02</span>
         <h3>Pembentuk Rupa Bumi</h3>
         <p>Laut membentuk sebagian besar fitur permukaan bumi, dari pesisir hingga palung.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup3" aria-haspopup="dialog">
         <span class="num">03</span>
         <h3>Pengatur Iklim</h3>
         <p>Laut adalah penggerak utama cuaca dan iklim, menyerap panas dan karbon.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup4" aria-haspopup="dialog">
         <span class="num">04</span>
         <h3>Penopang Kehidupan</h3>
         <p>Laut menghasilkan sebagian besar oksigen bumi dan membuatnya layak huni.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup5" aria-haspopup="dialog">
         <span class="num">05</span>
         <h3>Keanekaragaman Hayati</h3>
         <p>Laut menopang keanekaragaman hayati dan ekosistem yang luar biasa kaya.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup6" aria-haspopup="dialog">
         <span class="num">06</span>
         <h3>Laut dan Manusia</h3>
         <p>Laut dan manusia saling terhubung erat, secara budaya, ekonomi, dan ekologis.</p>
-      </div>
-      <div class="principle">
+      </button>
+      <button class="principle" type="button" data-popup="popup7" aria-haspopup="dialog">
         <span class="num">07</span>
         <h3>Masih Misterius</h3>
         <p>Sebagian besar laut masih belum terjelajahi dan menyimpan banyak hal untuk dipelajari.</p>
-      </div>
+      </button>
     </div>
   </section>
 
+        <div id="popup1" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup1-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup1-title">Bumi memiliki satu Samudra besar dengan banyak profil.</h2>
+            <br>
+            <p class="custom-paragraph"><strong>Lautan mencakup wilayah lebih dari 70% di Bumi ini.</strong> Bumi memilik satu Samudra atau lautan yang saling berhubungan dan mempengaruhi satu sama lain, dengan nama yang terbagi – bagi seperti Samudra Atlantik, Samudra Hindia, Samudra Pasifik, dan Samudra Selatan, yang saling terhubung. Kolam Samudra memiliki dasar laut dan formasi geologis lainnya di Bumi seperti pulau, parit, pegunungan tengah Samudra dan retakan-retakan di dasar Samudra yang ukuran dan bentuknya bervariasi sesuai dengan pergerakan kerak Bumi (litosfer). Puncak tertinggi, lembah dan dataran bumi semua ada juga di dasar Samudra.</p>
+            <br>
+            <div id="image-container" style="text-align: center;" class="col-md-6 offset-md-3">
+              <img src="assets/images/TERMOHALINE.PNG" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Sirkulasi termohalin (Curran, 2021).</figcaption>
+            </div><br>
+            <p class="custom-paragraph">Seluruh Samudra di Bumi ini terhubung melalui satu sistem sirkulasi yang didukung oleh angin, pasang surut, gaya rotasi Bumi (efek Coriolis), matahari dan perbedaan kepadatan air (densitas), yaitu <strong>Thermohaline Conveyor Belt atau “Sabuk panas laut global”.</strong> Sistem sirkulasi global ini menggerakkan air di seluruh dasar lautan, mengangkut energi (panas), materi, dan organisme di sekitar lautan.</p>
+            <br>
+            <p class="custom-paragraph"><strong>Perubahan sirkulasi laut memiliki dampak besar pada iklim</strong> dan menyebabkan perubahan ekosistem. Profil lainnya yang dapat dilihat yaitu permukaan laut. Permukaan laut adalah ketinggian rata-rata relatif laut dengan mempertimbangkan fenomena pasang surut. Permukaan laut dapat berubah karena mencairnya es. Permukaan air juga akan berubah mengembang dan berkontraksi dengan adanya perubahan temperatur udara dan air yang menghangat atau mendingin.</p>
+            <br>
+            <p class="custom-paragraph">Sebagian besar air di bumi ini, sekitar <strong>97%, berada di lautan.</strong> Air laut memiliki sifat unik, yaitu asin, titik beku-nya sedikit lebih rendah dari air tawar, kepadatannya sedikit lebih tinggi, dan konduktivitas listriknya jauh lebih tinggi. Keseimbangan pH sangat penting untuk kesehatan ekosistem laut, dan penting dalam mengendalikan tingkat di mana laut akan menyerap dan menyangga perubahan dalam karbon dioksida atmosfer. Lautan merupakan bagian integral dari siklus air dan terhubung ke semua reservoir air Bumi melalui proses penguapan dan presipitasi.</p>
+            <br>
+            <p class="custom-paragraph">Lautan terhubung ke danau besar, daerah aliran sungai (DAS), dan saluran-saluran air lainnya, karena semua DAS utama di bumi mengalir ke laut. <strong>Sungai dan anak-anak sungai mentransportasikan nutrisi, garam, sedimen, dan polutan dari DAS ke muara pantai dan ke laut.</strong> Meskipun lautan besar, namun tetap terbatas dan memiliki sumber daya terbatas.</p>
+          </div>
+        </div>
+
+        <div id="popup2" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup2-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup2-title">Laut dan Kehidupan di dalamnya yang membentuk bumi.</h2><br>
+            <p class="custom-paragraph"><strong>Banyak bahan atau material di bumi dan siklus biogeokimia berasal dari  laut.</strong> Batuan sedimen yang sekarang terbentang di darat terbentuk dari laut dengan volume besar batuan yang mengandung silika dan karbonat. Perubahan permukaan laut dari waktu ke waktu telah membuat kontinental berubah, berkontraksi, mengembang, hancur dan timbul. Erosi, seperti pengikisan batuan, tanah, bahan biotik dan bahan-bahan abiotik lainnya, terjadi di daerah pesisir sebagai efek dari proses yang terjadi akibat angin, gelombang, dan arus, baik di sungai dan lautan. Sebagian besar pasir pantai atau potongan kecil /sisa binatang, tanaman, batuan, dan mineral, terkikis dari sumber tanah dan terbawa ke pantai oleh sungai; pasir juga dapat terkikis dari pesisir oleh ombak atau gelombang. Selanjutnya pasir didistribusikan kembali secara musiman oleh gelombang dan arus pantai. Aktivitas tektonik, perubahan permukaan laut, dan kekuatan gelombang mempengaruhi struktur fisik dan bentang alam dari pantai hingga ke laut.</p>
+            <br>
+            <div id="image-container" style="text-align: center;" class="col-md-6 offset-md-3">
+              <img src="assets/images/popup2.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Batuan beku di Pantai Pemuteran, Bali Tahun 2017.</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong>Lautan adalah reservoir terbesar karbon yang memiliki siklus yang cepat di dunia.</strong> Banyak organisme menggunakan karbon terlarut di dalam laut membentuk cangkang, dan bagian kerangka lainnya, serta terumbu karang.</p><br>
+          </div>
+        </div>
+
+        <div id="popup3" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup3-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup3-title">Lautan adalah faktor utama pembentuk cuaca dan iklim.</h2><br>
+            <div id="image-container" style="text-align: center;" class="col-md-6 offset-md-3">
+              <img src="assets/images/popup3.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Pantai Pasir Putih di Pulau Sabang, Aceh, Tahun 2017.</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Interaksi proses laut dan atmosfer</strong> mengendalikan cuaca dan iklim dengan mendominasi sistem energi, air, dan karbon Bumi. Lautan membentuk cuaca dan iklim global dengan <strong style="color: black;">menyerap sebagian besar radiasi matahari</strong> yang mencapai Bumi. Pertukaran panas antara lautan dan atmosfer <strong style="color: black;">mendorong siklus air dan sirkulasi lautan dan atmosfer</strong>.</p><br>
+            <p class="custom-paragraph">Pertukaran panas antara laut dan atmosfer <strong style="color: black;">dapat menghasilkan fenomena cuaca global dan regional yang ekstrem</strong>, yang memengaruhi pola hujan dan kekeringan. Sebagai contoh signifikan adalah kejadian <strong style="color: black;">El Niño Southern Oscillation dan La Niña</strong>, yang menyebabkan perubahan penting dalam pola cuaca global, karena keduanya <strong style="color: black;">mengubah pola suhu permukaan laut di Pasifik</strong>.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Kondensasi air yang menguap dari lautan hangat</strong> memberikan energi untuk angin topan dan siklon. Sebagian besar hujan yang jatuh di darat <strong style="color: black;">awal mulanya berasal dari penguapan dari laut tropis</strong>. Lautan <strong style="color: black;">mendominasi siklus karbon di Bumi</strong>. Setengah dari produktivitas primer di Bumi terjadi di lapisan lautan yang masih mendapatkan sinar matahari. Lautan <strong style="color: black;">menyerap sekitar setengah dari semua karbon dioksida dan metana</strong> yang dilepaskan ke atmosfer. Lautan telah memiliki, dan akan terus memiliki, pengaruh signifikan terhadap perubahan iklim dengan <strong style="color: black;">menyerap, menyimpan, dan memindahkan panas, karbon, dan air</strong>. Perubahan sirkulasi lautan telah menghasilkan perubahan besar, tiba-tiba dalam iklim selama 50.000 terakhir tahun. Perubahan dalam sistem atmosfer lautan <strong style="color: black;">dapat mengakibatkan perubahan iklim</strong> yang pada gilirannya, <strong style="color: black;">menyebabkan perubahan lebih lanjut ke laut dan atmosfer</strong>. Interaksi ini memiliki <strong style="color: black;">konsekuensi fisik, kimia, biologis, ekonomi, dan sosial yang dramatis</strong>.</p><br>
+          </div>
+        </div>
+
+        <div id="popup4" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup4-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup4-title">Lautan membuat bumi layak huni.</h2><br>
+            <div id="image-container" style="text-align: center;" class="col-md-8 offset-md-2">
+              <img src="assets/images/fitoplankton.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Fitoplankton sebagai penghasil oksigen terbesar di bumi (tekno.tempo.co).</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Sebagian besar oksigen di atmosfer</strong> berasal dari aktivitas organisme fotosintesis di laut. <strong style="color: black;">Akumulasi oksigen di atmosfer bumi</strong> ini penting bagi kehidupan untuk berkembang dan berkelanjutan di darat. Oleh karena itu, lautan adalah <strong style="color: black;">tempat lahirnya kehidupan</strong>. Bukti awal kehidupan ditemukan di lautan. Jutaan spesies organisme di Bumi saat ini berhubungan dengan keturunan nenek moyang yang <strong style="color: black;">berevolusi di lautan</strong> dan masih terus berevolusi hingga hari ini.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Lautan menyediakan dan terus menyediakan air, oksigen, dan nutrisi</strong>, dan membentuk iklim yang dibutuhkan agar kehidupan terus berlangsung di Bumi (Prinsip-Prinsip Esensial 1, 3, dan 5).</p><br>
+          </div>
+        </div>
+
+        <div id="popup5" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup5-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup5-title">Lautan mendukung 5 keanekaragaman kehidupan dan ekosistem yang luar biasa.</h2><br>
+            <div id="image-container" style="text-align: center;" class="col-md-8 offset-md-2">
+              <img src="assets/images/eko1.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Eksosistem pasir dan sedikit mangrove di Pulau Pari, Kepulauan Seribu, DKI Jakarta Tahun 2019.</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Kehidupan di laut berkisar dalam ukuran dari makhluk hidup terkecil, mikroba, hingga hewan terbesar di Bumi, paus biru</strong>. Sebagian besar organisme dan biomassa di laut adalah mikroba, yang merupakan dasar dari semua jaring makanan laut. <strong style="color: black;">Mikroba adalah produsen utama terpenting di lautan</strong>. Mereka memiliki tingkat pertumbuhan yang sangat cepat dan siklus hidup, dan menghasilkan sejumlah besar karbon dan oksigen di Bumi. <strong style="color: black;">Sebagian besar kelompok utama mikroba yang ada di Bumi ditemukan secara khusus/eksklusif di lautan</strong> dan keragaman kelompok organisme utama jauh lebih besar di lautan daripada di darat.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Biologi laut memberikan banyak contoh unik siklus hidup, adaptasi, dan hubungan penting antara organisme</strong> (simbiosis, dinamika predator-mangsa, dan transfer energi) yang tidak terjadi di darat. <strong style="color: black;">Lautan menyediakan ruang hidup yang luas dengan ekosistem yang beragam dan unik dari permukaan melalui kolom air dan turun ke, dan di bawah, dasar laut</strong>. Sebagian besar ruang hidup di Bumi ada di lautan.</p><br>
+            <div id="image-container" style="text-align: center;" class="col-md-8 offset-md-2">
+              <img src="assets/images/eko5.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Tripang yang dapat ditemukan di  padang lamun saat surut di Pantai Kuta, Lombok, Nusa Tenggara Barat.</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Ekosistem laut ditentukan oleh faktor lingkungan dan komunitas organisme yang hidup di dalamnya</strong>. Kehidupan laut tidak terdistribusi secara merata melalui waktu atau ruang karena perbedaan faktor abiotik seperti oksigen, salinitas, suhu, pH, cahaya, nutrisi, tekanan, substrat, dan sirkulasi laut. <strong style="color: black;">Beberapa wilayah laut mendukung kehidupan paling melimpah di Bumi, sementara sebagian besar lautan tidak mendukung banyak kehidupan</strong>. Ada ekosistem laut dalam yang tidak bergantung pada energi dari sinar matahari dan organisme fotosintesis. Ventilasi hidrotermal, mata air panas bawah laut, dan rembesan metana dingin, hanya bergantung pada energi kimia dan organisme kemosintetik untuk mendukung kehidupan.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Pasang surut, gelombang, pemangsaan, substrat, dan / atau faktor-faktor lain menyebabkan pola zonasi vertikal di sepanjang pantai</strong>; kepadatan, tekanan, dan tingkat cahaya menyebabkan pola zonasi vertikal di laut terbuka. <strong style="color: black;">Pola zonasi mempengaruhi distribusi dan keragaman organisme</strong>. Estuari atau muara sungai menyediakan area pembibitan yang penting dan produktif bagi banyak spesies pantai, pesisir, dan laut.</p><br>
+          </div>
+        </div>
+
+        <div id="popup6" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup6-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup6-title">Lautan dan manusia saling terkait erat</h2><br>
+                      <div class="service-item first-service">
+          </div>
+            <p class="custom-paragraph"><strong style="color: black;">Lautan memengaruhi setiap kehidupan manusia</strong>. Lautan memasok air tawar, karena sebagian besar hujan berasal dari lautan dan menghasilkan hampir semua oksigen Bumi. <strong style="color: black;">Lautan mengontrol iklim Bumi, memengaruhi cuaca kita, dan memengaruhi kesehatan manusia</strong>.</p><br>
+            <div id="image-container" style="text-align: center;" class="col-md-8 offset-lg-2">
+              <img src="assets/images/rumahair.jpg" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Rumah Panggung di Laut</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Lautan menyediakan makanan, obat-obatan, dan sumber daya mineral dan energi</strong>. Ini mendukung pekerjaan dan ekonomi nasional, berfungsi sebagai jalan raya untuk transportasi barang dan orang, dan berperan dalam keamanan nasional.</p>
+            <!-- <div id="image-container" style="text-align: center;" class="col-md-8 offset-lg-2">
+              <img src="assets/images/rumahair2.jpg" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Tripang yang dapat ditemukan di  padang lamun saat surut di Pantai Kuta, Lombok, Nusa Tenggara Barat.</figcaption>
+            </div><br> -->
+            <p class="custom-paragraph"><strong style="color: black;">Lautan adalah sumber inspirasi, rekreasi, peremajaan, dan penemuan</strong>. Ini juga merupakan elemen penting dalam warisan banyak budaya. <strong style="color: black;">Manusia memengaruhi lautan dalam berbagai cara</strong>. Hukum, peraturan, dan manajemen sumber daya memengaruhi apa yang dibawa dan dimasukkan ke laut. Perkembangan dan aktivitas manusia mengarah pada polusi (sumber titik, sumber bukan titik, dan polusi suara), perubahan kimia laut (pengasaman laut), dan modifikasi fisik (perubahan ke pantai, pantai, dan sungai). Selain itu, manusia telah <strong style="color: black;">menghilangkan sebagian besar vertebrata besar dari lautan</strong>. <strong style="color: black;">Perubahan suhu laut dan pH karena aktivitas manusia</strong> dapat memengaruhi kelangsungan hidup beberapa organisme dan berdampak pada keanekaragaman hayati (pemutihan karang karena peningkatan suhu dan terhambatnya pembentukan cangkang akibat pengasaman laut). <strong style="color: black;">Sebagian besar populasi dunia tinggal di daerah pesisir</strong>. Wilayah pesisir rentan terhadap bahaya alam (tsunami, angin topan, siklon, perubahan permukaan laut, dan gelombang badai). <strong style="color: black;">Setiap orang bertanggung jawab untuk merawat lautan</strong>. Lautan menopang kehidupan di Bumi dan manusia harus hidup dengan cara yang menopang lautan. Tindakan individu dan kolektif diperlukan untuk mengelola sumber daya laut secara efektif untuk semua.</p><br>
+          </div>
+        </div>
+
+        <div id="popup7" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup7-title">
+          <div class="popup-content">
+            <button class="close" type="button" aria-label="Tutup pop-up">&times;</button>
+            <h2 id="popup7-title">Sebagian besar Samudra/lautan belum terjelajahi.</h2><br>
+            <p class="custom-paragraph"><strong style="color: black;">Lautan adalah tempat terbesar yang belum dijelajahi di Bumi</strong> — kurang dari 5% darinya telah dijelajahi. Generasi penjelajah dan peneliti berikutnya akan menemukan peluang besar untuk penemuan, inovasi, dan penyelidikan. <strong style="color: black;">Memahami lautan lebih dari sekadar rasa ingin tahu</strong>. Eksplorasi, eksperimen, dan penemuan diperlukan untuk lebih memahami sistem dan proses laut. Kelangsungan hidup kita bergantung padanya.</p><br>
+            <p class="custom-paragraph">Selama 50 tahun terakhir, <strong style="color: black;">penggunaan sumber daya laut telah meningkat secara signifikan</strong>; keberlanjutan sumber daya laut di masa depan tergantung pada pemahaman kita tentang sumber daya tersebut dan potensinya.</p><br>
+            <div id="image-container" style="text-align: center;" class="col-md-8 offset-lg-2">
+              <img src="assets/images/misterilaut.png" alt="Laut" style="width: 90%; height: auto;">
+              <figcaption>Misteri Laut (quora.com)</figcaption>
+            </div><br>
+            <p class="custom-paragraph"><strong style="color: black;">Teknologi, sensor, dan alat baru memperluas kemampuan kami untuk menjelajahi lautan</strong>. Para ilmuwan semakin bergantung pada satelit, drifters, pelampung, observatorium bawah laut, dan submersible tak berawak.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Penggunaan model matematika adalah bagian penting untuk memahami sistem kelautan</strong>. Model membantu kita memahami kompleksitas laut dan interaksinya dengan interior, atmosfer, iklim, dan massa daratan Bumi.</p><br>
+            <p class="custom-paragraph"><strong style="color: black;">Eksplorasi laut benar-benar interdisipliner</strong>. Ini membutuhkan kolaborasi erat antara ahli biologi, ahli kimia, klimatologi, pemrogram komputer, insinyur, ahli geologi, ahli meteorologi, ahli fisika, animator, dan ilustrator. <strong style="color: black;">Interaksi ini menumbuhkan ide-ide baru dan perspektif baru untuk pertanyaan</strong>.</p><br>
+          </div>
+        </div>
+<script>
+  (() => {
+    let activePopup = null;
+    let opener = null;
+    function closePopup() {
+      if (!activePopup) return;
+      activePopup.classList.remove('is-open');
+      document.body.classList.remove('popup-open');
+      activePopup = null;
+      if (opener) opener.focus();
+    }
+    document.querySelectorAll('.principle[data-popup]').forEach((card) => {
+      card.addEventListener('click', () => {
+        const popup = document.getElementById(card.dataset.popup);
+        if (!popup) return;
+        opener = card;
+        activePopup = popup;
+        popup.classList.add('is-open');
+        document.body.classList.add('popup-open');
+        popup.querySelector('.popup-content').setAttribute('tabindex', '-1');
+        popup.querySelector('.popup-content').focus();
+      });
+    });
+    document.querySelectorAll('.popup .close').forEach((button) => button.addEventListener('click', closePopup));
+    document.querySelectorAll('.popup').forEach((popup) => popup.addEventListener('click', (event) => { if (event.target === popup) closePopup(); }));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopup(); });
+  })();
+</script>
 </body>
 </html>
