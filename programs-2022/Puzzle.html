@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <title>Indonesia Ocean Literacy - Puzzle Page</title>
+    <link rel="stylesheet" href="puzzle.css">
+    <script src="puzzle.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,29 +24,195 @@
     <link type="text/css" rel="stylesheet" href="jquery-ui.custom.css"/>
     <link type="text/css" rel="stylesheet" href="jqJigsawPuzzle.css"/>
     <style>
+      .container2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        padding: 20px 40px; /* Added padding on left and right */
+        background: linear-gradient(to right, #667eea, #764ba2);
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        max-width: 50%; /* Prevents the container from stretching too wide */
+        margin-left: auto; /* Center the container */
+        margin-right: auto; /* Center the container */
+      }
+
+      #controls {
+        display: flex;
+        flex-direction: row;
+        gap: 20px; /* Adjusted gap for better spacing */
+        align-items: center;
+      }
+
+      #controls h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #ffffff; /* White text for better contrast against gradient */
+      }
+
+      #controls button {
+        padding: 12px 25px;
+        font-size: 1.3em;
+        cursor: pointer;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 50px; /* Fully rounded corners for pill-shaped button */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      #controls button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+
+      #controls button:active {
+        background-color: #1e7e34;
+        transform: translateY(0);
+      }
+
+      /* Optional: Additional styles for color buttons or icons */
+      #controls .color-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid white; /* White border around color buttons */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      #controls .color-btn:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+      }
+
+      #controls .color-btn:active {
+        transform: scale(1); /* Return to normal size on click */
+      }
+
+      #controls .slider {
+        -webkit-appearance: none; /* Remove default styling */
+        appearance: none;
+        width: 100px;
+        height: 10px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #0d6efd, #6610f2); /* Gradient for slider */
+        outline: none;
+        cursor: pointer;
+      }
+
+      #controls .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      #controls .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+        /* Container untuk menyelaraskan tombol */
+      .container1 {
+          display: flex;
+          justify-content: center; /* Mengatur agar konten berada di tengah secara horizontal */
+          align-items: center; /* Mengatur agar konten berada di tengah secara vertikal */
+          height: calc(100vh - 100px); /* Sesuaikan tinggi agar tidak terlalu jauh dari atas */
+          text-align: center; /* Menyelaraskan teks di dalam tombol */
+          margin-top: -150px; /* Kurangi jarak antara tombol dan elemen di atas */
+      }
+
+      /* Gaya tombol */
+      #save-button {
+          padding: 15px 30px; /* Menambah padding untuk memperbesar tombol */
+          background-color: blue; /* Warna background biru */
+          color: white; /* Warna teks putih */
+          border: none; /* Menghapus border default */
+          border-radius: 50px; /* Membuat bentuk tombol menjadi oval */
+          font-size: 1.5em; /* Ukuran teks lebih besar */
+          text-align: center; /* Menyelaraskan teks di tengah */
+          cursor: pointer; /* Menampilkan pointer pada tombol saat hover */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk tampilan tombol lebih baik */
+      }
+
+      #save-button h1 {
+          margin: 0; /* Menghilangkan margin default dari h1 */
+          font-size: 1.5em; /* Ukuran teks dalam tombol */
+      }
+
+      #save-button:hover {
+          background-color: darkblue; /* Mengubah warna background saat di-hover */
+      }
+      /* Popup container */
+      .popup {
+        display: none; /* Hidden by default */
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%;
+        background-color: rgba(0,0,0,0.4); /* Black with opacity */
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Show the popup when the 'active' class is added */
+      .popup.active {
+        display: flex; /* Flexbox to center the content */
+      }
+
+      /* Popup content */
+      .popup-content {
+        background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple gradient */
+        border-radius: 25px; /* Match the button's border-radius */
+        padding: 20px;
+        width: 80%; 
+        max-width: 400px;
+        text-align: center;
+        color: white; /* Text color to match the button */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif; /* Ensure the font matches */
+      }
+
+      /* Header style */
+      .popup-content h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: white; /* White text to match the button */
+      }
+
+      /* Button style */
+      #close-btn {
+        background-color: #28a745; /* Match the green reset button */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      #close-btn:hover {
+        background-color: #218838; /* Slightly darker on hover */
+      }
+
         body {
             zoom: 0.8; /* This sets the zoom level to 67% */
         }
-        .blue-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 24px;
-            color: white;
-            background-color: blue;
-            border: none;
-            border-radius: 50px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-      .blue-button:hover {
-            background-color: darkblue;
-        }
-
-      .section-heading {
-            text-align: center;
-        }      
         h1 {
             text-align: center;
             margin-bottom: 2cm;
@@ -136,240 +304,248 @@
             border: 1px solid #000;
         }
     </style>
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="jquery-ui.custom.min.js"></script>
-    <script type="text/javascript" src="jqJigsawPuzzle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oi-blue-bright:#2E86EB;
+    --oi-blue-mid:#1E4FAE;
+    --oi-blue-deep:#152D63;
+    --oi-navy:#0B1A3A;
+    --oi-line: rgba(13,27,42,0.1);
+  }
+  .site-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 5vw; height:78px;
+    background:linear-gradient(90deg, var(--oi-blue-bright) 0%, var(--oi-blue-mid) 55%, var(--oi-blue-deep) 100%);
+    position:sticky; top:0; z-index:999;
+    font-family:'Inter', sans-serif;
+  }
+  .site-header .site-logo{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:16px; letter-spacing:1px;
+    color:#FFFFFF; text-decoration:none;
+  }
+  .site-header nav.site-nav ul{list-style:none; display:flex; gap:44px; margin:0; padding:0;}
+  .site-header nav.site-nav > ul > li{position:relative;}
+  .site-header nav.site-nav a{color:#FFFFFF; font-size:15px; font-weight:500; opacity:0.95; transition:opacity .2s; text-decoration:none;}
+  .site-header nav.site-nav a:hover{opacity:0.7;}
+  @media (max-width:720px){ .site-header nav.site-nav ul{gap:22px;} .site-header nav.site-nav a{font-size:13px;} }
+  @media (max-width:560px){ .site-header nav.site-nav ul{display:none;} }
+  .site-header .has-dropdown{display:flex; align-items:center; gap:5px; cursor:default;}
+  .site-header .has-dropdown .caret{
+    width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+    transform:rotate(45deg); margin-top:-4px; transition:transform .2s;
+  }
+  .site-header nav.site-nav > ul > li:hover .caret{ transform:rotate(225deg); margin-top:2px; }
+  .site-header .dropdown{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    min-width:170px; margin-top:14px; list-style:none;
+    background:#FFFFFF; border-radius:10px; overflow:hidden;
+    box-shadow:0 16px 32px rgba(11,26,58,0.25);
+    opacity:0; visibility:hidden; transform:translateX(-50%) translateY(6px);
+    transition:opacity .18s, transform .18s, visibility .18s;
+    z-index:1000;
+  }
+  .site-header nav.site-nav > ul > li:hover .dropdown,
+  .site-header nav.site-nav > ul > li:focus-within .dropdown{
+    opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+  }
+  .site-header .dropdown a{
+    display:block; color:var(--oi-navy); font-size:14px; font-weight:500;
+    padding:12px 20px; opacity:1; transition:background .15s;
+  }
+  .site-header .dropdown a:hover{background:#EEF3FC;}
+  .site-header .dropdown li + li{border-top:1px solid var(--oi-line);}
+</style>
 </head>
 <body>
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="../programs-2022.html" class="logo">
-              <img src="assets/images/logo.png" alt="Indonesia Ocean Literacy">
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="../programs-2022.html" class="active" style="color: blue; font-size: 24px !important;">Home</a></li>
-              <li class="scroll-to-section"><a href="#bakau" style="color: blue; font-size: 24px !important;">Ayo Susun Puzzle!</a></li>
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
+    <header class="site-header">
+    <a href="../index.html" class="site-logo">INDONESIA OCEAN LITERACY</a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li>
+          <a href="javascript:void(0)" class="has-dropdown">Programs<span class="caret"></span></a>
+          <ul class="dropdown">
+            <li><a href="../programs-2022.html">Pengmas 2022</a></li>
+            <li><a href="../programs-2026.html">Pengmas 2026</a></li>
+          </ul>
+        </li>
+        <li><a href="../contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
   <!-- ***** Header Area End ***** -->
 
+  <!-- ***** Main Banner Area Start ***** -->
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-lg-6 align-self-center">
+            <div class="col-lg-12 align-self-center">
               <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
                   <div class="col-lg-12">
-                    <h2>Laut-laut di Indonesia</h2>
+                    <h2>Perairan Indonesia: Samudera, Laut, dan Selat yang Menyatukan Nusantara</h2>
                     <p class="custom-paragraph">
-                      Indonesia memiliki 31 laut yang dikenal, beberapa di antaranya adalah Laut Jawa, Laut Bali, Laut Banda, Laut Flores, Laut Halmahera, Laut Maluku, Laut Sulawesi, Laut Seram, Laut Timor, dan Laut Natuna. Laut-laut ini tersebar di seluruh kepulauan Indonesia dan memiliki peran penting dalam ekosistem, ekonomi, dan budaya negara. Berikut ini penjelasan mengenai Samudera, Laut, dan Selat yang berada di Perairan Indonesia.
+                      Indonesia, sebuah negara kepulauan yang terletak di garis khatulistiwa, dianugerahi dengan kekayaan perairan yang luar biasa. Perairan ini, yang terdiri dari samudera, laut, dan selat, tidak hanya menjadi pemersatu wilayah nusantara, tetapi juga menyimpan potensi ekonomi dan daya tarik alam yang tiada duanya. Samudera Hindia dan Samudera Pasifik yang mengapit Indonesia menjadi gerbang menuju dunia internasional, membuka jalur perdagangan dan pelayaran yang strategis. Samudera Hindia membawa sumber daya hayati yang melimpah, sedangkan Samudera Pasifik dengan ombaknya yang menantang menarik peselancar dan pecinta wisata bahari.
+                    </p>
+                    <div id="image-container" style="text-align: center;" class="col-md-10 offset-md-1">
+                      <img id="my_puzzle" src="assets/images/Slide1.PNG" alt="Padang Lamun" style="width: 90%; height: auto;">
+                      <figcaption>Peta Negara Kesatuan Republik Indonesia</figcaption>
+                    </div><br>
+                    <p class="custom-paragraph">
+                      Di antara pulau-pulau di Indonesia, terbentang laut-laut seperti Laut Arafura, Laut Flores, dan Laut Banda yang memiliki keanekaragaman hayati luar biasa. Terumbu karang yang indah dan berbagai jenis ikan menjadikannya rumah bagi ekosistem bahari yang kompleks dan kaya. Kekayaan ini menjadi daya tarik wisata sekaligus sumber daya ekonomi penting bagi masyarakat pesisir melalui sektor perikanan, budidaya laut, dan pariwisata bahari. Selat-selat seperti Selat Malaka, Selat Sunda, dan Selat Makassar juga memainkan peran penting sebagai jalur maritim strategis yang menghubungkan benua Asia dan Australia, menjadi urat nadi perekonomian regional dan global.
+                    </p>
+                    <p class="custom-paragraph">
+                      Meskipun kaya akan potensi, perairan Indonesia dihadapkan pada berbagai tantangan seperti pencemaran laut, penangkapan ikan berlebihan, dan kerusakan terumbu karang. Upaya pelestarian dan pengelolaan yang berkelanjutan sangat penting untuk menjaga keseimbangan dan kelestarian ekosistem bahari. Dengan langkah-langkah ini, Indonesia dapat terus memanfaatkan dan melestarikan kekayaan lautnya demi kesejahteraan dan keberlanjutan masa depan.
                     </p>
                   </div>
-                  <!-- <div class="col-lg-12">
-                    <div class="white-button first-button scroll-to-section">
-                      <a href="#contact">Draw <i class="fab fa-apple"></i></a>
-                    </div>
-                    <div class="white-button scroll-to-section">
-                      <a href="#contact">About <i class="fab fa-google-play"></i></a>
-                    </div>
-                  </div> -->
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="assets/images/Slide3.PNG" alt="">
-                <figcaption>Peta Negara Kesatuan Republik Indonesia</figcaption>
-                <!-- <img src="assets/images/slider-decc.png" alt=""> -->
-              </div><br>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-  
-  <div id="bakau" class="about-us section">
+  <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Puzzle Level Selection ***** -->
     <div class="container">
-      <div class="row">
-        <div class="row">
-          <div class="col-lg-12 align-self-center">
-            <div class="section-heading">
-              <a href="index3.html" class="blue-button">Puzzle Perairan Indonesia</a>
-          </div>
-        </div>
-        <div id="image-container" style="text-align: center;" class="col-md-8 offset-md-2">
-          <div class="right-image">
-            <img src="assets/images/Slide1.PNG" alt="">
-            <figcaption>Peta Batimetri Perairan Indonesia</figcaption>
-          </div>
-          <br>
-        </div>
-      </div><br>
-      <div class="row">
-        <div class="col-md-10 offset-lg-1">
-          <div class="box-item">
-            <h2><a><em>Samudera</em></a></h2><br>
-            <p><span>&#8226;</span> <strong>SAMUDRA PASIFIK :</strong> Terletak di bagian timur laut wilayah Negara Kesatuan Republik Indonesia (NKRI) dan merupakan samudra terluas di dunia.</p>
-            <p><span>&#8226;</span> <strong>SAMUDRA HINDIA :</strong> Terletak di bagian barat dan selatan wilayah Negara Republik Indonesia dan merupakan samudra terkecil di dunia.</p>
-          </div>
-        </div>
-        <div class="col-md-10 offset-lg-1">
-          <div class="box-item">
-            <h2><a><em>Laut</em></a></h2><br>
-            <p><span>&#8226;</span> <strong>LAUT NATUNA :</strong> Merupakan batas laut bagian utara Indonesia, antara Malaysia dan Singapore.</p>
-            <p><span>&#8226;</span> <strong>LAUT JAWA :</strong> Perairan laut dangkal dengan kedalaman rata-rata hingga 50 meter.</p>
-            <p><span>&#8226;</span> <strong>LAUT SULAWESI :</strong> Terletak di utara Pulau Sulawesi yang berbentuk basin hingga kedalaman 5500 meter.</p>
-            <p><span>&#8226;</span> <strong>LAUT BANDA :</strong> Laut terluas berbentuk basin terbesar dan terdalam (lebih dari 7000 meter) yang berada di wilayah NKRI.</p>
-            <p><span>&#8226;</span> <strong>LAUT ARAFURA :</strong> Terletak di bagian selatan timur wilayah Indonesia dan salah satu bagian dari paparan Sahul.</p>
-            <p><span>&#8226;</span> <strong>LAUT TIMOR :</strong> Berada di antara Pulau Timor dan Benua Australia.</p>
-            <p><span>&#8226;</span> <strong>LAUT SAWU :</strong> Laut berbentuk segitiga yang berada di antara tiga pulau, yaitu : Pulau Timor, Flores, dan Nusa Tenggara Timur.</p>
-          </div>
-        </div>
-        <div class="col-md-10 offset-lg-1">
-          <div class="box-item">
-            <h2><a><em>Selat</em></a></h2><br>
-            <p><span>&#8226;</span> <strong>SELAT MALAKA:</strong> Merupakan daerah perbatasan antara wilayah NKRI dan Malaysia. Selat dengan kedalaman 30 meter di ujung tenggara dan semakin dalam ke arah barat laut.</p>
-            <p><span>&#8226;</span> <strong>SELAT KARIMATA:</strong> Terletak di Paoaran Sunda dengan kedalaman hanya 30 meter. Selat antara Pulau Kalimantan dan Sumatra ini merupakan batas selatan dari Laut China Selatan.</p>
-            <p><span>&#8226;</span> <strong>SELAT SUNDA:</strong> Selat antara Pulau Jawa dan Pulau Sumatra dengan kedalaman 30 meter di sisi Laut Jawa dan tajam menurun hingga ribuan meter kedalamannya di bagian Samudra Hindia.</p>
-            <p><span>&#8226;</span> <strong>SELAT MAKASSAR:</strong> Merupakan pintu masuk terbesar massa air dari Samudra Pasifik ke Perairan Indonesia. Selat ini terletak antara Pulau Kalimantan dan Sulawesi.</p>
-            <p><span>&#8226;</span> <strong>SELAT LOMBOK:</strong> Selat yang terletak antara Pulau Bali dan Lombok ini, merupakan pintu keluar massa air dari Perairan Indonesia ke Samudra Hindia.</p>
-          </div>
-        </div>
+      <h1>Pilih Level Puzzle Anda</h1>
+      <div id="theme-buttons">
+          <button class="btn btn-primary theme-button" onclick="startPuzzle('easy')">Easy</button>
+          <button class="btn btn-secondary theme-button" onclick="startPuzzle('medium')">Medium</button>
+          <button class="btn btn-danger theme-button" onclick="startPuzzle('hard')">Hard</button>
+          <button class="btn btn-danger theme-button" onclick="startPuzzle('legend')">Legend</button>
       </div>
     </div>
-  </div> <br><br>
-  <footer id="newsletter">
+
+  <!-- ***** Puzzle Game Board ***** -->
+  <div id="game-container" style="display: none;">
+    <br>
+    <div id="pieces" class="puzzle-pieces"></div>
+    <div class="container2">
+      <div id="controls"><br><br>
+        <h1 id="turns">Total Langkah : 0</h1>
+        <h1 id="correctPieces">Benar: 0/9</h1>
+        <button id="reset" onclick="resetPuzzle()"><h1>Reset</h1></button>      
+        <!-- <button id="save-button"><h1>Save Puzzle</h1></button>       -->
+      </div>
+    </div>
+    
+    <!-- <div class="container1">
+      <button id="save-button"><h1>SELESAI DAN SIMPAN</h1></button>
+    </div> -->
+    <!-- Popup -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+          <h2 id="theme-name"></h2>
+          <p>Selamat! Kamu telah menyelesaikan puzzle.</p>
+          <button id="close-btn">Selamat Yaa!!</button>
+      </div>
+    </div>
+
+    <audio id="congratulations-audio" src="assets/audio/congratula.mp3"></audio>
+
+  </div>
+
+  <script src="puzzle.js"></script>
+
+    <footer id="newsletter" class="simple-footer" style="padding:36px 5vw; text-align:center; background:linear-gradient(180deg, #152D63 0%, #0B1A3A 100%);">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Join Our Mailing List</h4>
-            <p style="text-align: center;">
-              <a href="#" style="color: white;">Stay informed about the latest news and trends related to Indonesia's ocean life, ecosystems, and conservation efforts.</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-3">
-          <form id="search" action="#" method="GET">
-            <div class="row">
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="footer-widget">
-            <h4>Contact Us</h4>
-            <p>Bandung, Indonesia</p>
-            <p><a href="#">12921041@mahasiswa.itb.ac.id</a></p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="footer-widget" style="text-align: left;">
-            <h4>About Us</h4>
-            <p>We are committed to preserving Indonesia's marine biodiversity. Our mission is to raise awareness about ocean conservation and promote sustainable practices.</p>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="copyright-text">
-            <p>Copyright © 2024. All Rights Reserved.</p>
-          </div>
-        </div>
-      </div>
+      <p style="color:#C7D8F2; font-size:13px; margin:0;">© 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB</p>
     </div>
   </footer>
+    <!-- Audio Player -->
+    <audio id="audioPlayer" autoplay loop hidden>
+      <source src="assets/audio/song1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio autoplay>
+      <source src = "assets/audio/index3.mp3" type=" audio/mp3">
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Panggil fungsi speakText dengan teks yang diinginkan saat halaman dimuat
+        // speakText("Ketuk menu di sisi kanan atas dan pilih tingkat level Puzzle yang ingin kamu selesaikan!. Selamat menyelesaikan!");
+        
+        // Memulai pemutaran lagu pertamas
+        const audioPlayer = document.getElementById('audioPlayer');
+        const songs = [
+            'assets/audio/song1.mp3', // Ganti dengan nama file lagu Anda
+            'assets/audio/song2.mp3',
+            'assets/audio/song3.mp3'
+        ];
 
-  <!-- Audio Player -->
-  <audio id="audioPlayer" autoplay loop hidden>
-    <source src="assets/audio/song1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio> 
-  <audio autoplay>
-    <source src = "assets/audio/puzzle.mp3" type=" audio/mp3">
-  </audio>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-     // Panggil fungsi speakText dengan teks yang diinginkan saat halaman dimuat
-    //  speakText("Selamat datang di halaman Puzzle Lautan Indonesia! Di sini, Anda bisa menjelajahi keindahan laut Indonesia sambil menyusun puzzle yang menarik. Tantang diri Anda dengan berbagai tingkat kesulitan dan temukan pemandangan bawah laut yang menakjubkan. Ayo, mulai sekarang dan lihat sejauh mana keterampilan Anda dalam menyusun puzzle!");
-     
-     // Memulai pemutaran lagu pertamas
-     const audioPlayer = document.getElementById('audioPlayer');
-     const songs = [
-         'assets/audio/song1.mp3', // Ganti dengan nama file lagu Anda
-         'assets/audio/song2.mp3',
-         'assets/audio/song3.mp3'
-     ];
+        let currentSongIndex = 0;
 
-     let currentSongIndex = 0;
+        const playSong = (index) => {
+            audioPlayer.src = songs[index];
+            audioPlayer.play();
+        };
+        // Set volume (misalnya, 0.5 untuk setengah volume)
+        audioPlayer.volume = 0.2;
+        audioPlayer.addEventListener('ended', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentSongIndex);
+        });
 
-     const playSong = (index) => {
-         audioPlayer.src = songs[index];
-         audioPlayer.play();
-     };
-     // Set volume (misalnya, 0.5 untuk setengah volume)
-     audioPlayer.volume = 0.2;
-     audioPlayer.addEventListener('ended', () => {
-         currentSongIndex = (currentSongIndex + 1) % songs.length;
-         playSong(currentSongIndex);
-     });
+        playSong(currentSongIndex);
 
-     playSong(currentSongIndex);
+        // UNTUK SUARA SELAMAT DATANG
+        function speakText(text) {
+            speechSynthesis.cancel(); // Hentikan pembacaan sebelumnya
 
-     // UNTUK SUARA SELAMAT DATANG
-     function speakText(text) {
-         speechSynthesis.cancel(); // Hentikan pembacaan sebelumnya
+            const maxLength = 150; // Maksimum panjang teks untuk setiap bagian
+            const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g); // Potong teks berdasarkan kalimat
 
-         const maxLength = 150; // Maksimum panjang teks untuk setiap bagian
-         const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g); // Potong teks berdasarkan kalimat
+            let index = 0;
 
-         let index = 0;
+            function speakPart() {
+                if (index < sentences.length) {
+                    const part = sentences.slice(index, index + 1).join(' ');
+                    const utterance = new SpeechSynthesisUtterance(part);
+                    utterance.lang = 'id-ID';
+                    utterance.rate = 1.2; // Mengatur kecepatan pembicara sedikit lebih cepat
+                    utterance.pitch = 1.1; // Menyesuaikan nada suara
+                    utterance.onend = () => {
+                        index++;
+                        speakPart(); // Lanjutkan ke bagian berikutnya setelah yang sekarang selesai
+                    };
+                    speechSynthesis.speak(utterance);
+                    utterance.pitch = 100;
+                }
+            }
 
-         function speakPart() {
-             if (index < sentences.length) {
-                 const part = sentences.slice(index, index + 1).join(' ');
-                 const utterance = new SpeechSynthesisUtterance(part);
-                 utterance.lang = 'id-ID';
-                 utterance.rate = 1.2; // Mengatur kecepatan pembicara sedikit lebih cepat
-                 utterance.pitch = 1.1; // Menyesuaikan nada suara
-                 utterance.onend = () => {
-                     index++;
-                     speakPart(); // Lanjutkan ke bagian berikutnya setelah yang sekarang selesai
-                 };
-                 speechSynthesis.speak(utterance);
-                 utterance.pitch = 100;
-             }
-         }
-
-         speakPart(); // Mulai pembacaan dengan bagian pertama
-     }
-   });
-  </script>
+            speakPart(); // Mulai pembacaan dengan bagian pertama
+        }
+        // document.getElementById('save-button').addEventListener('click', function() {
+        //   // Tampilkan popup
+        //   const popup = document.getElementById('popup');
+        //   const themeNameElement = document.getElementById('theme-name'); // Pastikan variabel ini didefinisikan di dalam event listener
+        //   // Update teks di dalam span dengan nama tema yang dipilih
+        //   themeNameElement.textContent = selectedThemeName;
+        //   popup.classList.add('active');
+        
+        //   // Mainkan audio
+        //   const audio = document.getElementById('congratulations-audio');
+        //   audio.volume = 0.3;
+        //   audio.play();
+        
+        //   // Membacakan teks yang muncul di popup
+        //   speakText(popup.textContent);
+        // });
+        
+        // document.getElementById('close-popup').addEventListener('click', function() {
+        //   // Sembunyikan popup
+        //   const popup = document.getElementById('popup');
+        //   popup.classList.remove('active');
+        // });
+      });
+    </script>
+</body>
+</html>

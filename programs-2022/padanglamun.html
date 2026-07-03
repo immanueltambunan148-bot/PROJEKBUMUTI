@@ -92,32 +92,77 @@
         cursor: pointer;
       }        
     </style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oi-blue-bright:#2E86EB;
+    --oi-blue-mid:#1E4FAE;
+    --oi-blue-deep:#152D63;
+    --oi-navy:#0B1A3A;
+    --oi-line: rgba(13,27,42,0.1);
+  }
+  .site-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 5vw; height:78px;
+    background:linear-gradient(90deg, var(--oi-blue-bright) 0%, var(--oi-blue-mid) 55%, var(--oi-blue-deep) 100%);
+    position:sticky; top:0; z-index:999;
+    font-family:'Inter', sans-serif;
+  }
+  .site-header .site-logo{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:16px; letter-spacing:1px;
+    color:#FFFFFF; text-decoration:none;
+  }
+  .site-header nav.site-nav ul{list-style:none; display:flex; gap:44px; margin:0; padding:0;}
+  .site-header nav.site-nav > ul > li{position:relative;}
+  .site-header nav.site-nav a{color:#FFFFFF; font-size:15px; font-weight:500; opacity:0.95; transition:opacity .2s; text-decoration:none;}
+  .site-header nav.site-nav a:hover{opacity:0.7;}
+  @media (max-width:720px){ .site-header nav.site-nav ul{gap:22px;} .site-header nav.site-nav a{font-size:13px;} }
+  @media (max-width:560px){ .site-header nav.site-nav ul{display:none;} }
+  .site-header .has-dropdown{display:flex; align-items:center; gap:5px; cursor:default;}
+  .site-header .has-dropdown .caret{
+    width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+    transform:rotate(45deg); margin-top:-4px; transition:transform .2s;
+  }
+  .site-header nav.site-nav > ul > li:hover .caret{ transform:rotate(225deg); margin-top:2px; }
+  .site-header .dropdown{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    min-width:170px; margin-top:14px; list-style:none;
+    background:#FFFFFF; border-radius:10px; overflow:hidden;
+    box-shadow:0 16px 32px rgba(11,26,58,0.25);
+    opacity:0; visibility:hidden; transform:translateX(-50%) translateY(6px);
+    transition:opacity .18s, transform .18s, visibility .18s;
+    z-index:1000;
+  }
+  .site-header nav.site-nav > ul > li:hover .dropdown,
+  .site-header nav.site-nav > ul > li:focus-within .dropdown{
+    opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+  }
+  .site-header .dropdown a{
+    display:block; color:var(--oi-navy); font-size:14px; font-weight:500;
+    padding:12px 20px; opacity:1; transition:background .15s;
+  }
+  .site-header .dropdown a:hover{background:#EEF3FC;}
+  .site-header .dropdown li + li{border-top:1px solid var(--oi-line);}
+</style>
 </head>
 <body>
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="../programs-2022.html" class="logo">
-              <img src="assets/images/logo.png" alt="Chain App Dev">
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="../programs-2022.html" class="active" style="color: blue; font-size: 24px !important;">Halaman Utama</a></li>
-              <li class="scroll-to-section"><a href="Ekosistem.html" style="color: blue; font-size: 24px !important;">Kembali</a></li>
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
+    <header class="site-header">
+    <a href="../index.html" class="site-logo">INDONESIA OCEAN LITERACY</a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li>
+          <a href="javascript:void(0)" class="has-dropdown">Programs<span class="caret"></span></a>
+          <ul class="dropdown">
+            <li><a href="../programs-2022.html">Pengmas 2022</a></li>
+            <li><a href="../programs-2026.html">Pengmas 2026</a></li>
+          </ul>
+        </li>
+        <li><a href="../contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
@@ -299,54 +344,9 @@
       </div>
     </div>
   </div>
-  <footer id="newsletter">
+    <footer id="newsletter" class="simple-footer" style="padding:36px 5vw; text-align:center; background:linear-gradient(180deg, #152D63 0%, #0B1A3A 100%);">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Join Our Mailing List</h4>
-            <p style="text-align: center;">
-              <a href="#" style="color: white;">Stay informed about the latest news and trends related to Indonesia's ocean life, ecosystems, and conservation efforts.</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-3">
-          <form id="search" action="#" method="GET">
-            <div class="row">
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <fieldset>
-                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="footer-widget">
-            <h4>Contact Us</h4>
-            <p>Bandung, Indonesia</p>
-            <p><a href="#">12921041@mahasiswa.itb.ac.id</a></p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="footer-widget" style="text-align: left;">
-            <h4>About Us</h4>
-            <p>We are committed to preserving Indonesia's marine biodiversity. Our mission is to raise awareness about ocean conservation and promote sustainable practices.</p>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="copyright-text">
-            <p>Copyright © 2024. All Rights Reserved.</p>
-          </div>
-        </div>
-      </div>
+      <p style="color:#C7D8F2; font-size:13px; margin:0;">© 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB</p>
     </div>
   </footer>
   <!-- Audio Player -->
