@@ -117,7 +117,30 @@
   .site-header nav.site-nav a{color:#FFFFFF; font-size:15px; font-weight:500; opacity:0.95; transition:opacity .2s; text-decoration:none;}
   .site-header nav.site-nav a:hover{opacity:0.7;}
   @media (max-width:720px){ .site-header nav.site-nav ul{gap:22px;} .site-header nav.site-nav a{font-size:13px;} }
-  @media (max-width:560px){ .site-header nav.site-nav ul{display:none;} }
+  .site-nav-toggle{ display:none; }
+  @media (max-width:560px){
+    .site-nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; gap:5px;
+      position:absolute; right:5vw; top:50%; transform:translateY(-50%);
+      background:none; border:none; cursor:pointer; padding:8px; z-index:1001;
+    }
+    .site-nav-toggle span{ display:block; width:22px; height:2px; background:#FFFFFF; }
+    .site-header nav.site-nav ul{
+      display:none; position:absolute; top:78px; left:0; right:0;
+      flex-direction:column; gap:0; margin:0; padding:8px 0;
+      background:var(--oi-navy); box-shadow:0 16px 32px rgba(0,0,0,0.3); z-index:1000;
+    }
+    .site-header nav.site-nav.nav-open ul{ display:flex; }
+    .site-header nav.site-nav ul > li{ width:100%; }
+    .site-header nav.site-nav ul > li > a{ display:flex; align-items:center; padding:14px 24px; font-size:15px; }
+    .site-header .dropdown{
+      position:static; transform:none; opacity:1; visibility:visible;
+      box-shadow:none; background:rgba(255,255,255,0.05); margin:0; border-radius:0; min-width:0;
+    }
+    .site-header .dropdown a{ padding:12px 40px; color:#CFE0F5 !important; }
+    .site-header .dropdown a:hover{ background:rgba(255,255,255,0.08); }
+    .site-header .dropdown li + li{ border-top:1px solid rgba(255,255,255,0.08); }
+  }
   .site-header .has-dropdown{display:flex; align-items:center; gap:5px; cursor:default;}
   .site-header .has-dropdown .caret{
     width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
@@ -165,6 +188,9 @@
         <li><a href="../contact.html">Contact Us</a></li>
       </ul>
     </nav>
+    <button class="site-nav-toggle" aria-label="Buka menu navigasi" onclick="this.closest('.site-header').querySelector('nav.site-nav').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
   </header>
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
