@@ -105,43 +105,74 @@
     font-size:15.5px; line-height:1.85; color:#3C4A5C; margin-bottom:20px;
   }
 
+  /* HERO 2026 - Konservasi Penyu */
+  .hero-2026{
+    position:relative; overflow:hidden;
+    min-height:460px;
+    display:flex; flex-direction:column; justify-content:flex-start;
+    color:var(--white);
+  }
+  .hero-2026 .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background:url('assets/images/pengmas2026-reef.jpg') center 30%/cover no-repeat;
+  }
+  .hero-2026 .hero-overlay{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(115deg, rgba(4,12,30,0.88) 0%, rgba(6,20,45,0.65) 38%, rgba(6,20,45,0.25) 62%, rgba(6,20,45,0.15) 100%);
+  }
+  .hero-2026 .hero-turtle{
+    position:absolute; z-index:2; right:-2%; bottom:14%;
+    width:46%; max-width:560px; min-width:280px;
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.45));
+  }
+  .hero-2026 .hero-text{
+    position:relative; z-index:3;
+    padding:70px 5vw 0; max-width:640px;
+  }
+  .hero-2026 .hero-eyebrow{
+    display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px;
+  }
+  .hero-2026 h1{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(24px,3.2vw,34px);
+    line-height:1.25; margin-bottom:16px;
+  }
+  .hero-2026 .hero-goal{
+    font-size:14px; line-height:1.75; color:#DCE7F5;
+  }
+  .hero-2026 .hero-goal strong{ color:var(--white); font-weight:600; }
+
+  .hero-menu{
+    position:relative; z-index:3;
+    margin:34px 5vw 28px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    background:rgba(255,255,255,0.94); backdrop-filter:blur(6px);
+    border-radius:16px; overflow:hidden;
+    box-shadow:0 14px 34px rgba(0,0,0,0.3);
+  }
+  @media (max-width:720px){ .hero-menu{ grid-template-columns:repeat(2,1fr); } .hero-2026 .hero-turtle{ opacity:0.55; } }
+  .hero-menu-item{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    padding:22px 10px; text-align:center;
+    border-right:1px solid rgba(11,26,58,0.1);
+  }
+  .hero-menu-item:nth-child(4){ border-right:none; }
+  @media (max-width:720px){
+    .hero-menu-item:nth-child(2){ border-right:none; }
+    .hero-menu-item:nth-child(1), .hero-menu-item:nth-child(2){ border-bottom:1px solid rgba(11,26,58,0.1); }
+  }
+  .hero-menu-item .circle-icon{
+    width:36px; height:36px; border-radius:50%; border:1.5px solid var(--blue-mid);
+    display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--blue-mid);
+  }
+  .hero-menu-item .m-label{
+    font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--navy); line-height:1.3;
+  }
+
   /* single-column layout for programs page */
   .info-single{ max-width:1100px; margin:0 auto; }
   .eyebrow-small{
     display:block; font-family:var(--font-body); font-size:12px; letter-spacing:3px;
     font-weight:600; color:var(--blue-mid); margin-bottom:14px;
-  }
-
-  /* explanation box (empty / placeholder for 2026) */
-  .explain-box{
-    border-radius:10px; padding:26px 28px; margin-bottom:40px;
-  }
-  .explain-box h3{
-    font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--navy); margin-bottom:10px;
-  }
-  .explain-box p{ font-size:14.5px; line-height:1.8; color:#3C4A5C; }
-  .explain-box.empty{
-    border:1.5px dashed #B9C7DA; background:#F7FAFD;
-  }
-  .explain-box.empty h3{ color:#8A96A3; }
-  .explain-box.empty p{ color:#A6B3C4; }
-
-  /* PENGMAS 2026 menu grid */
-  .menu-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
-  }
-  @media (max-width:820px){ .menu-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:480px){ .menu-grid{grid-template-columns:1fr;} }
-  .menu-item{
-    border:1.5px dashed #B9C7DA; border-radius:14px; background:#F7FAFD;
-    padding:34px 18px; text-align:center;
-  }
-  .menu-item .icon{ font-size:30px; margin-bottom:14px; opacity:0.75; }
-  .menu-item h4{
-    font-family:var(--font-display); font-weight:600; font-size:14.5px; color:var(--navy); margin-bottom:8px;
-  }
-  .menu-item .tag{
-    display:inline-block; font-size:10.5px; letter-spacing:1.2px; font-weight:600; color:#A6B3C4;
   }
 
   footer{
@@ -170,41 +201,33 @@
     </nav>
   </header>
 
-  <div class="banner">
-    <span class="eyebrow">PROGRAMS</span>
-    <h1>Pengmas 2026</h1>
-  </div>
+  <section class="hero-2026">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <img class="hero-turtle" src="assets/images/pengmas2026-turtle.png" alt="Penyu laut">
 
-  <section class="info">
-    <div class="info-single">
-      <span class="eyebrow-small">ANGKATAN 2026</span>
+    <div class="hero-text">
+      <span class="hero-eyebrow">PENGMAS 2026</span>
+      <h1>Peningkatan Kapasitas Kelompok Masyarakat Konservasi Penyu</h1>
+      <p class="hero-goal"><strong>Tujuan:</strong> Meningkatkan kapasitas Kelompok Masyarakat Konservasi Penyu Desa Eilogo dalam Monitoring dan Pelaporan Konservasi.</p>
+    </div>
 
-      <div class="explain-box empty">
-        <h3>Tentang Pengmas 2026</h3>
-        <p>Konten penjelasan mengenai kegiatan Pengmas 2026 akan segera diisi di sini.</p>
+    <div class="hero-menu">
+      <div class="hero-menu-item">
+        <div class="circle-icon">📄</div>
+        <span class="m-label">Gambaran<br>umum</span>
       </div>
-
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="icon">🗺️</div>
-          <h4>Gambaran Umum</h4>
-          <span class="tag">SEGERA HADIR</span>
-        </div>
-        <div class="menu-item">
-          <div class="icon">🎓</div>
-          <h4>Pelatihan</h4>
-          <span class="tag">SEGERA HADIR</span>
-        </div>
-        <div class="menu-item">
-          <div class="icon">🌱</div>
-          <h4>Implementasi Lapangan</h4>
-          <span class="tag">SEGERA HADIR</span>
-        </div>
-        <div class="menu-item">
-          <div class="icon">📊</div>
-          <h4>Monitoring dan Evaluasi</h4>
-          <span class="tag">SEGERA HADIR</span>
-        </div>
+      <div class="hero-menu-item">
+        <div class="circle-icon">🛟</div>
+        <span class="m-label">Pelatihan</span>
+      </div>
+      <div class="hero-menu-item">
+        <div class="circle-icon">📋</div>
+        <span class="m-label">Implementasi<br>Lapangan</span>
+      </div>
+      <div class="hero-menu-item">
+        <div class="circle-icon">🔍</div>
+        <span class="m-label">Monitoring &<br>Evaluasi</span>
       </div>
     </div>
   </section>
