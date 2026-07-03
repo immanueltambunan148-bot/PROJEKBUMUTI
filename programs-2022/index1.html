@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='stylesheet' type='text/css' href='styles.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Indonesia Ocean Literacy - Drawing Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <style>
+        /* Popup container */
+      .popup {
+          display: none; /* Hidden by default */
+          position: fixed; 
+          z-index: 1; 
+          left: 0;
+          top: 0;
+          width: 100%; 
+          height: 100%;
+          background-color: rgba(0,0,0,0.4); /* Black with opacity */
+          justify-content: center;
+          align-items: center;
+        }
+
+        /* Show the popup when the 'active' class is added */
+        .popup.active {
+          display: flex; /* Flexbox to center the content */
+        }
+
+        /* Popup content */
+        .popup-content {
+          background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple gradient */
+          border-radius: 25px; /* Match the button's border-radius */
+          padding: 20px;
+          width: 80%; 
+          max-width: 400px;
+          text-align: center;
+          color: white; /* Text color to match the button */
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          font-family: Arial, sans-serif; /* Ensure the font matches */
+        }
+
+        /* Header style */
+        .popup-content h2 {
+          margin-top: 0;
+          font-size: 24px;
+          color: white; /* White text to match the button */
+        }
+
+        /* Button style */
+        #close-btn {
+          background-color: #28a745; /* Match the green reset button */
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 25px;
+          font-size: 16px;
+          cursor: pointer;
+          margin-top: 15px;
+        }
+
+        #close-btn:hover {
+          background-color: #218838; /* Slightly darker on hover */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2cm;
+        }
+        #theme-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .theme-button {
+            padding: 10px;
+            font-size: 16px;
+        }
+     
+        #theme-details {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        #themes {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .theme-name {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .theme-description {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        p {
+            font-size: 24px;
+            text-align: justify;
+            line-height: 2;
+            color: black;
+        }      
+        .custom-paragraph {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 24px;  
+            margin-bottom: 20px;
+        }  
+        .custom-paragraph strong {
+            color: #000;
+            font-weight: bold; 
+        }       
+        h1 {
+            text-align: center;
+            margin-bottom: 2cm;
+        }
+        #theme-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 20px;
+            gap: 20px; /* Jarak antar kolom, sesuaikan sesuai kebutuhan */
+        }
+        .theme-button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../programs.html#pengmas-2022" class="logo">
+              <img src="assets/images/logo.png" alt="Chain App Dev">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="Drawing.html">Kembali</a></li>
+              <li class="scroll-to-section"><a href="#themes">Mulai Mewarnai</a></li>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-6 align-self-center">
+                  <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <h2>Selamat datang di Halaman Mewarnai - Hewan Laut</h2>
+                        <p style="font-size: 18px;">
+                          Indonesia memiliki ekosistem laut yang sangat beragam dan menakjubkan. Di halaman ini, Anda dapat mempelajari lebih lanjut tentang laut Indonesia dan mewarnai gambar-gambar kehidupan laut yang indah. Selami dunia makhluk laut yang penuh warna dan temukan keajaiban harta karun akuatik Indonesia. Baik Anda seorang anak atau orang dewasa, halaman mewarnai ini menawarkan perjalanan yang menyenangkan ke dalam laut biru yang dalam.
+                        </p>
+                        <p style="font-size: 18px;">
+                          Indonesia, sebuah negara kepulauan yang terdiri dari lebih dari 17.000 pulau, merupakan rumah bagi beberapa lingkungan laut yang paling beragam di dunia. Laut Indonesia penuh dengan kehidupan, menjadi rumah bagi beragam makhluk laut yang memukau, mulai dari plankton terkecil hingga mamalia terbesar. Surga bawah laut ini merupakan bukti kreativitas dan ketangguhan alam, dan sekarang, Anda berkesempatan untuk menjelajahi dan menghargainya melalui kegiatan mewarnai dan belajar.
+                        </p>
+                        <p style="font-size: 18px;">
+                          Halaman mewarnai kami dirancang untuk menjadi edukasi dan hiburan. Saat Anda menghidupkan hewan-hewan laut ini dengan warna, Anda juga akan mendapatkan wawasan tentang habitat, perilaku, dan peran penting yang mereka mainkan dalam ekosistem. Setiap lembar mewarnai disertai dengan fakta dan informasi menarik tentang hewan laut yang digambarkan, menjadikannya aktivitas yang sempurna untuk pikiran yang selalu ingin tahu.
+                        </p>
+                        <p style="font-size: 18px;">
+                          Mari kita mulai dengan tinjauan umum tentang keragaman hewan laut yang luar biasa yang mungkin Anda temui di perairan Indonesia. Keanekaragaman hayati laut Indonesia yang kaya meliputi segala hal, mulai dari barakuda yang besar hingga coelacanth yang sulit dipahami. Makhluk-makhluk ini mendiami berbagai lingkungan, mulai dari terumbu karang dangkal hingga dasar laut yang dalam, masing-masing beradaptasi dengan ceruk unik mereka. Keanekaragaman ini merupakan cerminan dari sifat ekosistem laut yang kompleks dan saling bergantung.
+                        </p>
+                      </div>
+                      <!-- <div class="col-lg-12">
+                        <div class="white-button first-button scroll-to-section">
+                          <a href="#contact">Draw <i class="fab fa-apple"></i></a>
+                        </div>
+                        <div class="white-button scroll-to-section">
+                          <a href="#contact">About <i class="fab fa-google-play"></i></a>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <img src="assets/images/about-right-dec.png" alt="">
+                  </div><br><br>
+                  <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <img src="assets/images/HAL2.png" alt="">
+                  </div><br><br>
+                  <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <img src="assets/images/sdsd.png" alt="">
+                    <figcaption>Buku Mari Mewarnai Laut Indonesia!</figcaption>
+                    <!-- <img src="assets/images/slider-decc.png" alt=""> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div id="landing-page">
+        <h1>MARI KITA BUAT HEWAN LAUT LEBIH BERWARNA!!</h1>
+        <div id="themes">
+            <div id="theme-buttons">
+                <!-- Buttons will be generated by script.js -->
+            </div>
+        </div>
+    </div>
+    <div id="coloring-page" style="display: none; margin: 0 auto;">
+      <button id="back-button">Back</button>
+      <h1>Warnai Gambar Sesuai Instruksi!</h1>
+    
+      <div style="display: flex; align-items: flex-start;">
+        <!-- Wrapper untuk tombol-tombol -->
+        <div class="wrapper" id="wrapper" style="display: flex; flex-direction: column; margin-right: 20px;">
+          <div class="icon color">
+            <div class="tooltip">Select</div>
+            <span><i><input type="color" id="colorChange"></i></span>
+          </div>
+          <div class="tooltip">Pen Size</div>
+          <span><i><input type="range" id="penSize" step="1" min="10" max="50" value="20"></i></span>
+    
+          <div class="icon Pencil">
+            <div class="tooltip">Pencil</div>
+            <button id="btnPencil">
+              <span><i class="fa fa-pencil-alt"></i></span>
+            </button>
+          </div>
+          <!-- <div class="icon Brush">
+            <div class="tooltip">Brush</div>
+            <button id="btnBrush">
+              <span><i class="fa fa-paint-brush"></i></span>
+            </button>
+          </div>           -->
+          <!-- <div class="icon Bucket">
+            <div class="tooltip">Fill</div>
+            <button id="btnBucket">
+              <span><i class="fa fa-fill-drip"></i></span>
+            </button>
+          </div> -->
+    
+          <div class="icon Eraser">
+            <div class="tooltip">Eraser</div>
+            <button id="btnEraser">
+              <span><i class="fa fa-eraser"></i></span>
+            </button>
+          </div>
+    
+          <div class="icon Clear">
+            <div class="tooltip">Clear</div>
+            <button id="btnClear">
+              <span><i class="fa fa-broom"></i></span>
+            </button>
+          </div>
+    
+          <div class="icon Undo">
+            <div class="tooltip">Undo</div>
+            <button id="btnUndo">
+              <span><i class="fa fa-undo"></i></span>
+            </button>
+          </div>
+        </div>
+    
+        <!-- Canvas -->
+        <canvas id="myCanvas" style="border: 1px solid #000;"></canvas>
+      </div>
+      <div id="theme-description">
+        <!-- Theme description will be loaded by script.js -->
+    </div>
+    <div class="container1">
+      <button id="save-button"><h1>SELESAI DAN SIMPAN</h1></button>
+    </div>
+    <!-- Popup -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+          <h2 id="theme-name1"></h2>
+            <p id="popup-text">Selamat! Kamu sudah menyelesaikan warna dari <span id="theme-name"></span> dengan baik! Ayo warnai hewan laut lainnya.</p>
+            <button id="close-btn">Selamat Yaa!!!</button>
+    </div>
+    
+    <!-- Audio -->
+    <audio id="congratulations-audio" src="assets/audio/congratula.mp3"></audio>
+
+
+<script src="script.js"></script> 
+      <!-- Audio Player -->
+  <audio id="audioPlayer" autoplay loop hidden>
+    <source src="assets/audio/song3.mp3" type="audio/mpeg">
+  </audio> 
+</body>
+</html>

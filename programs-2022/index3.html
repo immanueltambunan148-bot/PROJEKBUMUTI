@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Puzzle perairan di Indonesia dengan berbagai tingkat kesulitan">
+    <meta name="author" content="Indonesia Ocean Literacy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Indonesia Ocean Literacy - Puzzle Page</title>
+    <link rel="stylesheet" href="puzzle.css">
+    <script src="puzzle.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link type="text/css" rel="stylesheet" href="jquery-ui.custom.css"/>
+    <link type="text/css" rel="stylesheet" href="jqJigsawPuzzle.css"/>
+    <style>
+      .container2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        padding: 20px 40px; /* Added padding on left and right */
+        background: linear-gradient(to right, #667eea, #764ba2);
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        max-width: 50%; /* Prevents the container from stretching too wide */
+        margin-left: auto; /* Center the container */
+        margin-right: auto; /* Center the container */
+      }
+
+      #controls {
+        display: flex;
+        flex-direction: row;
+        gap: 20px; /* Adjusted gap for better spacing */
+        align-items: center;
+      }
+
+      #controls h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #ffffff; /* White text for better contrast against gradient */
+      }
+
+      #controls button {
+        padding: 12px 25px;
+        font-size: 1.3em;
+        cursor: pointer;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 50px; /* Fully rounded corners for pill-shaped button */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      #controls button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+
+      #controls button:active {
+        background-color: #1e7e34;
+        transform: translateY(0);
+      }
+
+      /* Optional: Additional styles for color buttons or icons */
+      #controls .color-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid white; /* White border around color buttons */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      #controls .color-btn:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+      }
+
+      #controls .color-btn:active {
+        transform: scale(1); /* Return to normal size on click */
+      }
+
+      #controls .slider {
+        -webkit-appearance: none; /* Remove default styling */
+        appearance: none;
+        width: 100px;
+        height: 10px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #0d6efd, #6610f2); /* Gradient for slider */
+        outline: none;
+        cursor: pointer;
+      }
+
+      #controls .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      #controls .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+        /* Container untuk menyelaraskan tombol */
+      .container1 {
+          display: flex;
+          justify-content: center; /* Mengatur agar konten berada di tengah secara horizontal */
+          align-items: center; /* Mengatur agar konten berada di tengah secara vertikal */
+          height: calc(100vh - 100px); /* Sesuaikan tinggi agar tidak terlalu jauh dari atas */
+          text-align: center; /* Menyelaraskan teks di dalam tombol */
+          margin-top: -150px; /* Kurangi jarak antara tombol dan elemen di atas */
+      }
+
+      /* Gaya tombol */
+      #save-button {
+          padding: 15px 30px; /* Menambah padding untuk memperbesar tombol */
+          background-color: blue; /* Warna background biru */
+          color: white; /* Warna teks putih */
+          border: none; /* Menghapus border default */
+          border-radius: 50px; /* Membuat bentuk tombol menjadi oval */
+          font-size: 1.5em; /* Ukuran teks lebih besar */
+          text-align: center; /* Menyelaraskan teks di tengah */
+          cursor: pointer; /* Menampilkan pointer pada tombol saat hover */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk tampilan tombol lebih baik */
+      }
+
+      #save-button h1 {
+          margin: 0; /* Menghilangkan margin default dari h1 */
+          font-size: 1.5em; /* Ukuran teks dalam tombol */
+      }
+
+      #save-button:hover {
+          background-color: darkblue; /* Mengubah warna background saat di-hover */
+      }
+      /* Popup container */
+      .popup {
+        display: none; /* Hidden by default */
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%;
+        background-color: rgba(0,0,0,0.4); /* Black with opacity */
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Show the popup when the 'active' class is added */
+      .popup.active {
+        display: flex; /* Flexbox to center the content */
+      }
+
+      /* Popup content */
+      .popup-content {
+        background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple gradient */
+        border-radius: 25px; /* Match the button's border-radius */
+        padding: 20px;
+        width: 80%; 
+        max-width: 400px;
+        text-align: center;
+        color: white; /* Text color to match the button */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif; /* Ensure the font matches */
+      }
+
+      /* Header style */
+      .popup-content h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: white; /* White text to match the button */
+      }
+
+      /* Button style */
+      #close-btn {
+        background-color: #28a745; /* Match the green reset button */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      #close-btn:hover {
+        background-color: #218838; /* Slightly darker on hover */
+      }
+
+        body {
+            zoom: 0.8; /* This sets the zoom level to 67% */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2cm;
+        }
+        #theme-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .theme-button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        p {
+            font-size: 24px;
+            text-align: justify;
+            line-height: 2;
+            color: black;
+        }      
+        .custom-paragraph {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 24px;  
+            margin-bottom: 20px;
+        }  
+        .custom-paragraph strong {
+            color: #000;
+            font-weight: bold; 
+        }       
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: auto;
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+        }
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #puzzle-container {
+            display: grid;
+            gap: 2px;
+            margin-top: 20px;
+            border: 2px solid #000; /* Border for visibility */
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            min-height: 400px; /* Minimum height for visibility */
+        }
+        #pieces-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 20px;
+            border: 2px solid #000; /* Border for visibility */
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            min-height: 200px; /* Minimum height for visibility */
+        }
+        .puzzle-piece {
+            cursor: grab;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../programs.html#pengmas-2022" class="logo">
+              <img src="assets/images/logo.png" alt="Indonesia Ocean Literacy">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="../programs.html#pengmas-2022" class="active" style="color: blue; font-size: 24px !important;">Home</a></li>
+              <li class="scroll-to-section"><a href="#theme-buttons" style="color: blue; font-size: 24px !important;">Ayo Susun Puzzle!</a></li>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Perairan Indonesia: Samudera, Laut, dan Selat yang Menyatukan Nusantara</h2>
+                    <p class="custom-paragraph">
+                      Indonesia, sebuah negara kepulauan yang terletak di garis khatulistiwa, dianugerahi dengan kekayaan perairan yang luar biasa. Perairan ini, yang terdiri dari samudera, laut, dan selat, tidak hanya menjadi pemersatu wilayah nusantara, tetapi juga menyimpan potensi ekonomi dan daya tarik alam yang tiada duanya. Samudera Hindia dan Samudera Pasifik yang mengapit Indonesia menjadi gerbang menuju dunia internasional, membuka jalur perdagangan dan pelayaran yang strategis. Samudera Hindia membawa sumber daya hayati yang melimpah, sedangkan Samudera Pasifik dengan ombaknya yang menantang menarik peselancar dan pecinta wisata bahari.
+                    </p>
+                    <div id="image-container" style="text-align: center;" class="col-md-10 offset-md-1">
+                      <img id="my_puzzle" src="assets/images/Slide1.PNG" alt="Padang Lamun" style="width: 90%; height: auto;">
+                      <figcaption>Peta Negara Kesatuan Republik Indonesia</figcaption>
+                    </div><br>
+                    <p class="custom-paragraph">
+                      Di antara pulau-pulau di Indonesia, terbentang laut-laut seperti Laut Arafura, Laut Flores, dan Laut Banda yang memiliki keanekaragaman hayati luar biasa. Terumbu karang yang indah dan berbagai jenis ikan menjadikannya rumah bagi ekosistem bahari yang kompleks dan kaya. Kekayaan ini menjadi daya tarik wisata sekaligus sumber daya ekonomi penting bagi masyarakat pesisir melalui sektor perikanan, budidaya laut, dan pariwisata bahari. Selat-selat seperti Selat Malaka, Selat Sunda, dan Selat Makassar juga memainkan peran penting sebagai jalur maritim strategis yang menghubungkan benua Asia dan Australia, menjadi urat nadi perekonomian regional dan global.
+                    </p>
+                    <p class="custom-paragraph">
+                      Meskipun kaya akan potensi, perairan Indonesia dihadapkan pada berbagai tantangan seperti pencemaran laut, penangkapan ikan berlebihan, dan kerusakan terumbu karang. Upaya pelestarian dan pengelolaan yang berkelanjutan sangat penting untuk menjaga keseimbangan dan kelestarian ekosistem bahari. Dengan langkah-langkah ini, Indonesia dapat terus memanfaatkan dan melestarikan kekayaan lautnya demi kesejahteraan dan keberlanjutan masa depan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Puzzle Level Selection ***** -->
+    <div class="container">
+      <h1>Pilih Level Puzzle Anda</h1>
+      <div id="theme-buttons">
+          <button class="btn btn-primary theme-button" onclick="startPuzzle('easy')">Easy</button>
+          <button class="btn btn-secondary theme-button" onclick="startPuzzle('medium')">Medium</button>
+          <button class="btn btn-danger theme-button" onclick="startPuzzle('hard')">Hard</button>
+          <button class="btn btn-danger theme-button" onclick="startPuzzle('legend')">Legend</button>
+      </div>
+    </div>
+
+  <!-- ***** Puzzle Game Board ***** -->
+  <div id="game-container" style="display: none;">
+    <br>
+    <div id="pieces" class="puzzle-pieces"></div>
+    <div class="container2">
+      <div id="controls"><br><br>
+        <h1 id="turns">Total Langkah : 0</h1>
+        <h1 id="correctPieces">Benar: 0/9</h1>
+        <button id="reset" onclick="resetPuzzle()"><h1>Reset</h1></button>      
+        <!-- <button id="save-button"><h1>Save Puzzle</h1></button>       -->
+      </div>
+    </div>
+    
+    <!-- <div class="container1">
+      <button id="save-button"><h1>SELESAI DAN SIMPAN</h1></button>
+    </div> -->
+    <!-- Popup -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+          <h2 id="theme-name"></h2>
+          <p>Selamat! Kamu telah menyelesaikan puzzle.</p>
+          <button id="close-btn">Selamat Yaa!!</button>
+      </div>
+    </div>
+
+    <audio id="congratulations-audio" src="assets/audio/congratula.mp3"></audio>
+
+  </div>
+
+  <script src="puzzle.js"></script>
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>Join Our Mailing List</h4>
+            <p style="text-align: center;">
+              <a href="#" style="color: white;">Stay informed about the latest news and trends related to Indonesia's ocean life, ecosystems, and conservation efforts.</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3">
+          <form id="search" action="#" method="GET">
+            <div class="row">
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>Bandung, Indonesia</p>
+            <p><a href="#">12921041@mahasiswa.itb.ac.id</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-widget" style="text-align: left;">
+            <h4>About Us</h4>
+            <div class="logo">
+              <img src="assets/images/logo.png" alt="">
+            </div>
+            <p>We are committed to preserving Indonesia's marine biodiversity. Our mission is to raise awareness about ocean conservation and promote sustainable practices.</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p>Copyright © 2024. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <!-- Audio Player -->
+    <audio id="audioPlayer" autoplay loop hidden>
+      <source src="assets/audio/song1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio autoplay>
+      <source src = "assets/audio/index3.mp3" type=" audio/mp3">
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Panggil fungsi speakText dengan teks yang diinginkan saat halaman dimuat
+        // speakText("Ketuk menu di sisi kanan atas dan pilih tingkat level Puzzle yang ingin kamu selesaikan!. Selamat menyelesaikan!");
+        
+        // Memulai pemutaran lagu pertamas
+        const audioPlayer = document.getElementById('audioPlayer');
+        const songs = [
+            'assets/audio/song1.mp3', // Ganti dengan nama file lagu Anda
+            'assets/audio/song2.mp3',
+            'assets/audio/song3.mp3'
+        ];
+
+        let currentSongIndex = 0;
+
+        const playSong = (index) => {
+            audioPlayer.src = songs[index];
+            audioPlayer.play();
+        };
+        // Set volume (misalnya, 0.5 untuk setengah volume)
+        audioPlayer.volume = 0.2;
+        audioPlayer.addEventListener('ended', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentSongIndex);
+        });
+
+        playSong(currentSongIndex);
+
+        // UNTUK SUARA SELAMAT DATANG
+        function speakText(text) {
+            speechSynthesis.cancel(); // Hentikan pembacaan sebelumnya
+
+            const maxLength = 150; // Maksimum panjang teks untuk setiap bagian
+            const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g); // Potong teks berdasarkan kalimat
+
+            let index = 0;
+
+            function speakPart() {
+                if (index < sentences.length) {
+                    const part = sentences.slice(index, index + 1).join(' ');
+                    const utterance = new SpeechSynthesisUtterance(part);
+                    utterance.lang = 'id-ID';
+                    utterance.rate = 1.2; // Mengatur kecepatan pembicara sedikit lebih cepat
+                    utterance.pitch = 1.1; // Menyesuaikan nada suara
+                    utterance.onend = () => {
+                        index++;
+                        speakPart(); // Lanjutkan ke bagian berikutnya setelah yang sekarang selesai
+                    };
+                    speechSynthesis.speak(utterance);
+                    utterance.pitch = 100;
+                }
+            }
+
+            speakPart(); // Mulai pembacaan dengan bagian pertama
+        }
+        // document.getElementById('save-button').addEventListener('click', function() {
+        //   // Tampilkan popup
+        //   const popup = document.getElementById('popup');
+        //   const themeNameElement = document.getElementById('theme-name'); // Pastikan variabel ini didefinisikan di dalam event listener
+        //   // Update teks di dalam span dengan nama tema yang dipilih
+        //   themeNameElement.textContent = selectedThemeName;
+        //   popup.classList.add('active');
+        
+        //   // Mainkan audio
+        //   const audio = document.getElementById('congratulations-audio');
+        //   audio.volume = 0.3;
+        //   audio.play();
+        
+        //   // Membacakan teks yang muncul di popup
+        //   speakText(popup.textContent);
+        // });
+        
+        // document.getElementById('close-popup').addEventListener('click', function() {
+        //   // Sembunyikan popup
+        //   const popup = document.getElementById('popup');
+        //   popup.classList.remove('active');
+        // });
+      });
+    </script>
+</body>
+</html>

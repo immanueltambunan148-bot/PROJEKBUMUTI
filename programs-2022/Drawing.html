@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Indonesia Ocean Literacy - Landing Page </title>
+    <title>Popup Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      body {
+            zoom: 0.8; /* This sets the zoom level to 67% */
+        }
+      .blue-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+      .blue-button:hover {
+            background-color: darkblue;
+        }
+
+      .section-heading {
+            text-align: center;
+        }      
+      p {
+            font-size: 30px;
+            text-align: justify;
+            line-height: 2;
+            color: black;
+        }      
+      .custom-paragraph {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 24px;  
+            margin-bottom: 20px;
+        }  
+      .custom-paragraph strong {
+          color: #000;
+          font-weight: bold; 
+        }       
+      /* Style for the popup */
+      .popup {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: auto;
+        padding: 20px;
+        border-radius: 3px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid #fff;
+      }
+      .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../programs.html#pengmas-2022" class="logo">
+              <img src="assets/images/logo.png" alt="Chain App Dev">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="../programs.html#pengmas-2022" class="active" style="color: blue; font-size: 24px !important;">Halaman Utama</a></li>
+              <li class="scroll-to-section"><a href="index1.html" style="color: blue; font-size: 24px !important;">Binatang Laut</a></li>
+              <!-- <li class="scroll-to-section"><a href="#about">Ecosystem</a></li>
+              <li class="scroll-to-section"><a href="Puzzle.html">Ayo Susun Puzzle!</a></li> -->
+              <!-- <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Masuk</a></div></li>  -->
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+</div>
+
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Mewarnai Keanekaragaman Laut</h2>
+                    <p>
+                      Selamat datang di Dunia Warna Laut! Temukan keindahan bawah laut melalui halaman mewarnai kami yang penuh dengan beragam hewan laut, ekosistem yang memukau, serta aktivitas manusia di lautan. Jelajahi dan warnai kehidupan laut seperti ikan-ikan berwarna-warni, karang yang menakjubkan, serta penyu yang anggun. Selain itu, Anda juga bisa mewarnai kapal selam, penyelam, dan berbagai kegiatan di lautan yang penuh petualangan. Mari ciptakan karya seni yang menggabungkan kecantikan alam bawah laut dengan sentuhan kreativitas Anda. Bergabunglah sekarang dan biarkan imajinasi Anda berenang bebas di lautan warna!
+                    </p>
+                  </div>
+                  <!-- <div class="col-lg-12">
+                    <div class="white-button first-button scroll-to-section">
+                      <a href="#contact">Draw <i class="fab fa-apple"></i></a>
+                    </div>
+                    <div class="white-button scroll-to-section">
+                      <a href="#contact">About <i class="fab fa-google-play"></i></a>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/Draw.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- =================================================================================================================== -->
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4><em>Ayo Gambar Laut Kita !</em></h4>
+            <img src="assets/images/heading-line-dec.png" alt="">
+            <p>Selami keajaiban lautan Indonesia dan temukan kehidupan dan ekosistem yang hidup subur di bawah ombak.</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="index1.html">Binatang Laut</a></h4>
+                <p>Temukan beragam kehidupan laut yang menghuni perairan Indonesia, mulai dari lumba-lumba yang megah dan penyu yang anggun hingga bintang laut dan anemon yang penuh warna.</p>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Ekosistem</a></h4>
+                <p>Jelajahi ekosistem bawah laut yang rumit, termasuk terumbu karang yang semarak, hutan bakau yang tenang, padang lamun yang rimbun, dan habitat laut dalam yang misterius.(Akan Segera Hadir !)</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Aktivitas Manusia di Laut</a></h4>
+                <p>Pelajari berbagai aktivitas manusia di lautan, seperti memancing secara tradisional, kapal Pinisi yang ikonik, pasar ikan yang ramai, dan wisata bahari yang menarik seperti menyelam dan snorkeling. (Akan Segera Hadir !)</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Keindahan Bawah Laut</a></h4>
+                <p>Saksikan keindahan dunia bawah laut yang menakjubkan dengan formasi karang yang memukau, kehidupan laut yang semarak, struktur bebatuan yang unik, dan keajaiban mikroskopis plankton dan mikroorganisme.  (Akan Segera Hadir !)</p>
+              </div>
+            </div>
+            <div class="col-lg-12">
+            
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-image">
+            <img src="assets/images/about-right-dec.png" alt="">
+          </div>
+          <div class="right-image">
+            <img src="assets/images/sdsd.png" alt="">
+            <figcaption>Mari Mewarnai Laut Indonesia!</figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>Join Our Mailing List</h4>
+            <p style="text-align: center;">
+              <a href="#" style="color: white;">Stay informed about the latest news and trends related to Indonesia's ocean life, ecosystems, and conservation efforts.</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3">
+          <form id="search" action="#" method="GET">
+            <div class="row">
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>Bandung, Indonesia</p>
+            <p><a href="#">12921041@mahasiswa.itb.ac.id</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-widget" style="text-align: left;">
+            <h4>About Us</h4>
+            <div class="logo">
+              <img src="assets/images/logo.png" alt="">
+            </div>
+            <p>We are committed to preserving Indonesia's marine biodiversity. Our mission is to raise awareness about ocean conservation and promote sustainable practices.</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p>Copyright © 2024. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <!-- Audio Player -->
+    <audio id="audioPlayer" autoplay loop hidden>
+      <source src="assets/audio/song2.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio autoplay>
+      <source src = "assets/audio/drawing.mp3" type=" audio/mp3">
+    </audio>
+  
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+          // Panggil fungsi speakText dengan teks yang diinginkan saat halaman dimuat
+          // speakText("Selamat datang di halaman mewarnai! Di halaman ini, kamu dapat memilih topik yang ingin kamu warnai, mulai dari binatang laut, ekosistem, keindahan bawah laut, hingga aktivitas manusia di laut. Selamat berkreasi!");
+          
+          // Memulai pemutaran lagu pertamas
+          const audioPlayer = document.getElementById('audioPlayer');
+          const songs = [
+              'assets/audio/song1.mp3', // Ganti dengan nama file lagu Anda
+              'assets/audio/song2.mp3',
+              'assets/audio/song3.mp3'
+          ];
+
+          let currentSongIndex = 0;
+
+          const playSong = (index) => {
+              audioPlayer.src = songs[index];
+              audioPlayer.play();
+          };
+          // Set volume (misalnya, 0.5 untuk setengah volume)
+          audioPlayer.volume = 0.1;
+          audioPlayer.addEventListener('ended', () => {
+              currentSongIndex = (currentSongIndex + 1) % songs.length;
+              playSong(currentSongIndex);
+          });
+
+          playSong(currentSongIndex);
+
+          // UNTUK SUARA SELAMAT DATANG
+          function speakText(text) {
+              speechSynthesis.cancel(); // Hentikan pembacaan sebelumnya
+
+              const maxLength = 150; // Maksimum panjang teks untuk setiap bagian
+              const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g); // Potong teks berdasarkan kalimat
+
+              let index = 0;
+
+              function speakPart() {
+                  if (index < sentences.length) {
+                      const part = sentences.slice(index, index + 1).join(' ');
+                      const utterance = new SpeechSynthesisUtterance(part);
+                      utterance.lang = 'id-ID';
+                      utterance.rate = 1.2; // Mengatur kecepatan pembicara sedikit lebih cepat
+                      utterance.pitch = 1.1; // Menyesuaikan nada suara
+                      utterance.onend = () => {
+                          index++;
+                          speakPart(); // Lanjutkan ke bagian berikutnya setelah yang sekarang selesai
+                      };
+                      speechSynthesis.speak(utterance);
+                  }
+              }
+
+              speakPart(); // Mulai pembacaan dengan bagian pertama
+          }
+        });
+    </script>
+  
+
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Puzzle perairan di Indonesia dengan berbagai tingkat kesulitan">
+    <meta name="author" content="Indonesia Ocean Literacy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Indonesia Ocean Literacy - Puzzle Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link type="text/css" rel="stylesheet" href="jquery-ui.custom.css"/>
+    <link type="text/css" rel="stylesheet" href="jqJigsawPuzzle.css"/>
+    <style>
+        body {
+            zoom: 0.8; /* This sets the zoom level to 67% */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2cm;
+        }
+        #theme-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .theme-button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        p {
+            font-size: 24px;
+            text-align: justify;
+            line-height: 2;
+            color: black;
+        }      
+        .custom-paragraph {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 24px;  
+            margin-bottom: 20px;
+        }  
+        .custom-paragraph strong {
+            color: #000;
+            font-weight: bold; 
+        }       
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: auto;
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+        }
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #puzzle-container {
+            display: grid;
+            gap: 2px;
+            margin-top: 20px;
+            border: 2px solid #000; /* Border for visibility */
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            min-height: 400px; /* Minimum height for visibility */
+        }
+        #pieces-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 20px;
+            border: 2px solid #000; /* Border for visibility */
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            min-height: 200px; /* Minimum height for visibility */
+        }
+        .puzzle-piece {
+            cursor: grab;
+            border: 1px solid #000;
+        }
+    </style>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="jqJigsawPuzzle.js"></script>
+</head>
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../programs.html#pengmas-2022" class="logo">
+              <img src="assets/images/logo.png" alt="Indonesia Ocean Literacy">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="../programs.html#pengmas-2022" class="active" style="color: blue; font-size: 24px !important;">Home</a></li>
+              <li class="scroll-to-section"><a href="#about" style="color: blue; font-size: 24px !important;">Ekosistem Pesisir</a></li>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Ekosistem Pesisir</h2>
+                    <p class="custom-paragraph">
+                      Ekosistem adalah komunitas besar yang melibatkan interaksi antara organisme hidup (tanaman, hewan, mikroba) dan komponen tak hidup (batuan, air, dll.) di area tertentu. Komponen hidup (biotik) dan tak hidup (abiotik) saling terhubung melalui siklus nutrisi dan aliran energi. Ekosistem terbagi menjadi dua kategori besar: terestrial (berbasis darat) dan akuatik (berbasis air). Jenis utama ekosistem termasuk hutan, padang rumput, gurun, tundra, air tawar, dan laut.
+                    </p>
+                    <div id="image-container" style="text-align: center;" class="col-md-10 offset-md-1">
+                      <img id="my_puzzle" src="assets/images/eko1.png" alt="Padang Lamun" style="width: 90%; height: auto;">
+                      <figcaption>Eksosistem pasir dan sedikit mangrove di Pulau Pari, Kepulauan Seribu, DKI Jakarta Tahun 2019</figcaption>
+                    </div><br>
+                    <p class="custom-paragraph">
+                      Istilah "bioma" digunakan untuk menggambarkan ekosistem terestrial yang luas, seperti tundra. Ekosistem bervariasi secara spesifik di berbagai lokasi geografis, misalnya, ekosistem laut di Laut Banda berbeda dengan ekosistem di Laut Jawa atau Teluk Lampung.
+                    </p>
+                    <p class="custom-paragraph">
+                      Ekosistem akuatik dibagi menjadi ekosistem air tawar dan ekosistem laut. Ekosistem air tawar terdapat di sungai, mata air, kolam, danau, dan rawa air tawar, dan terdiri dari kelas air yang hampir tidak bergerak (seperti kolam) dan air yang mengalir (seperti sungai). Ekosistem air tawar menjadi habitat bagi ganggang, plankton, serangga, amfibi, ikan air tawar, dan tanaman bawah air.
+                    </p>
+                    <p class="custom-paragraph">
+                      Ekosistem laut mengandung garam sehingga airnya asin, dan mencakup dasar laut, permukaan, zona pasang surut, muara, rawa-rawa garam, bakau, dan terumbu karang. Ekosistem ini memiliki biodiversitas yang sangat tinggi. Berikut adalah beberapa contoh ekosistem pesisir:
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Main Banner Area End ***** -->
+
+  
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4><em>Jenis-jenis Ekosistem Pesisir</em></h4>
+            <img src="assets/images/heading-line-dec.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="box-item">
+            <h2><a href="terumbukarang.html">Terumbu Karang</a></h2><br>
+            <p>Terumbu karang atau koral banyak tumbuh di pesisir daerah tropis, seperti di Indonesia. Umumnya koral akan tumbuh secara koloni dalam jumlah yang cukup besar....</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="box-item">
+            <h2><a href="padanglamun.html">Padang Lamun</a></h2><br>
+            <p>Lamun adalah sejenis rumput-rumputan yang terendam dalam air laut mulai dari akar dan batang yang juga merupakan daunnya....</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="box-item">
+            <h2><a href="hutanbakau.html">Hutan Bakau</a></h2><br>
+            <p>Salah satu ekosistem pesisir yang banyak di daerah tropis seperti di Indonesia adalah mangrove atau tanaman bakau. Tanaman ini hidup di daerah antara air laut dan air tawar atau daratan...</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="box-item">
+            <h2><a href="estuari.html">Estuari</a></h2><br>
+            <p>Estuari, yang sering disebut muara, adalah wilayah pesisir semi tertutup yang terbentuk di pertemuan antara sungai dan laut. Ekosistem ini kaya akan keanekaragaman hayati dan memainkan peran penting dalam menjaga keseimbangan lingkungan pesisir...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>Join Our Mailing List</h4>
+            <p style="text-align: center;">
+              <a href="#" style="color: white;">Stay informed about the latest news and trends related to Indonesia's ocean life, ecosystems, and conservation efforts.</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3">
+          <form id="search" action="#" method="GET">
+            <div class="row">
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <fieldset>
+                  <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>Bandung, Indonesia</p>
+            <p><a href="#">12921041@mahasiswa.itb.ac.id</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-widget" style="text-align: left;">
+            <h4>About Us</h4>
+            <div class="logo">
+              <img src="assets/images/logo.png" alt="">
+            </div>
+            <p>We are committed to preserving Indonesia's marine biodiversity. Our mission is to raise awareness about ocean conservation and promote sustainable practices.</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p>Copyright © 2024. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Audio Player -->
+  <audio id="audioPlayer" autoplay loop hidden>
+    <source src="assets/audio/song1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <audio autoplay>
+    <source src = "assets/audio/ekosistem.mp3" type=" audio/mp3">
+  </audio>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // Panggil fungsi speakText dengan teks yang diinginkan saat halaman dimuat
+          // speakText("Di Halaman ini, kamu dapat mengetahui lebih dalam mengenai ekosistem pesisir yang terdiri dari muara, terumbu karang, hutan bakau, dan padang lamun.");
+          
+          // Memulai pemutaran lagu pertamas
+          const audioPlayer = document.getElementById('audioPlayer');
+          const songs = [
+              'assets/audio/song1.mp3', // Ganti dengan nama file lagu Anda
+              'assets/audio/song2.mp3',
+              'assets/audio/song3.mp3'
+          ];
+
+          let currentSongIndex = 0;
+
+          const playSong = (index) => {
+              audioPlayer.src = songs[index];
+              audioPlayer.play();
+          };
+          // Set volume (misalnya, 0.5 untuk setengah volume)
+          audioPlayer.volume = 0.2;
+          audioPlayer.addEventListener('ended', () => {
+              currentSongIndex = (currentSongIndex + 1) % songs.length;
+              playSong(currentSongIndex);
+          });
+
+          playSong(currentSongIndex);
+
+          // UNTUK SUARA SELAMAT DATANG
+          function speakText(text) {
+              speechSynthesis.cancel(); // Hentikan pembacaan sebelumnya
+
+              const maxLength = 150; // Maksimum panjang teks untuk setiap bagian
+              const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g); // Potong teks berdasarkan kalimat
+
+              let index = 0;
+
+              function speakPart() {
+                  if (index < sentences.length) {
+                      const part = sentences.slice(index, index + 1).join(' ');
+                      const utterance = new SpeechSynthesisUtterance(part);
+                      utterance.lang = 'id-ID';
+                      utterance.rate = 1.2; // Mengatur kecepatan pembicara sedikit lebih cepat
+                      utterance.pitch = 1.1; // Menyesuaikan nada suara
+                      utterance.onend = () => {
+                          index++;
+                          speakPart(); // Lanjutkan ke bagian berikutnya setelah yang sekarang selesai
+                      };
+                      speechSynthesis.speak(utterance);
+                  }
+              }
+
+              speakPart(); // Mulai pembacaan dengan bagian pertama
+          }
+      });
+  </script>
