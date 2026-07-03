@@ -189,17 +189,33 @@ function checkCorrectPieces(rows, columns, level) {
         // Mainkan audio
         const audio = new Audio('assets/audio/congratula.mp3');
         audio.volume = 0.3;
-        audio.play();
-    
-        // Sembunyikan popup dan resume previous audio setelah lagu selesai
-        audio.addEventListener('ended', function() {
+        audio.play().catch(() => {});
+
+        // Fungsi untuk menutup popup (dipakai tombol close, klik di luar, maupun setelah audio selesai)
+        let popupAlreadyClosed = false;
+        function closeWinPopup() {
+            if (popupAlreadyClosed) return;
+            popupAlreadyClosed = true;
             popup.classList.remove('active');
-            
+            audio.pause();
+
             // Resume the previously playing audio if there was one
             if (previouslyPlayingAudio) {
-                previouslyPlayingAudio.play();
+                previouslyPlayingAudio.play().catch(() => {});
             }
-        });
+        }
+
+        // Sembunyikan popup dan resume previous audio setelah lagu selesai
+        audio.addEventListener('ended', closeWinPopup);
+
+        // Tombol "Selamat Yaa!!" dan klik di luar kotak popup juga bisa menutup
+        const closeBtn = document.getElementById('close-btn');
+        if (closeBtn) {
+            closeBtn.onclick = closeWinPopup;
+        }
+        popup.onclick = function(e) {
+            if (e.target === popup) closeWinPopup();
+        };
       
         // Membacakan teks yang muncul di popup
         // speakText(popup.textContent);

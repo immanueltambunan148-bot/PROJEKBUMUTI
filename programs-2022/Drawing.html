@@ -245,7 +245,7 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="box-item">
-                <h4><a href="#">Binatang Laut</a></h4>
+                <h4><a href="#drawing-tool">Binatang Laut</a></h4>
                 <p>Temukan beragam kehidupan laut yang menghuni perairan Indonesia, mulai dari lumba-lumba yang megah dan penyu yang anggun hingga bintang laut dan anemon yang penuh warna.</p>
               </div>
             </div>
@@ -289,46 +289,62 @@
 
   <!-- =================================================================================================================== -->
   <div id="drawing-tool" class="section" style="padding:70px 5vw 90px; background:#F7FAFD;">
-    <div class="container" style="max-width:900px;">
+    <div class="container" style="max-width:1000px;">
       <div class="section-heading" style="text-align:center; margin-bottom:28px;">
         <h4><em>Ayo Mewarnai!</em></h4>
         <img src="assets/images/heading-line-dec.png" alt="">
-        <p style="font-size:16px !important; text-align:center !important; line-height:1.6 !important;">Pilih template, warnai langsung di layar, lalu unduh hasil karyamu.</p>
+        <p style="font-size:16px !important; text-align:center !important; line-height:1.6 !important;">Pilih salah satu hewan laut di bawah ini, lalu warnai langsung di layar.</p>
       </div>
 
-      <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:16px;">
-        <button type="button" class="dt-template-btn" data-template="blank">Kosong</button>
-        <button type="button" class="dt-template-btn" data-template="fish">Ikan</button>
-        <button type="button" class="dt-template-btn" data-template="turtle">Penyu</button>
-        <button type="button" class="dt-template-btn" data-template="coral">Karang</button>
-      </div>
+      <!-- Pilihan tema / nama ikan -->
+      <div id="dt-theme-buttons" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:22px;"></div>
 
-      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:center; background:#FFFFFF; border:1px solid rgba(13,27,42,0.1); border-radius:14px; padding:14px 18px; margin-bottom:18px;">
-        <div id="dt-palette" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
-        <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#3C4A5C;">
-          Warna kustom
-          <input type="color" id="dt-custom-color" value="#2E86EB" style="width:34px; height:34px; border:none; border-radius:8px; padding:0; cursor:pointer;">
-        </label>
-        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#3C4A5C;">
-          Ukuran kuas
-          <input type="range" id="dt-brush-size" min="2" max="40" value="10">
-        </label>
-        <button type="button" id="dt-eraser-btn" style="padding:8px 16px; border-radius:8px; border:1.5px solid #B9C7DA; background:#F7FAFD; font-size:13px; cursor:pointer;">Penghapus</button>
-        <button type="button" id="dt-clear-btn" style="padding:8px 16px; border-radius:8px; border:none; background:#E14B4B; color:#fff; font-size:13px; cursor:pointer;">Bersihkan</button>
-        <button type="button" id="dt-download-btn" style="padding:8px 16px; border-radius:8px; border:none; background:#2E86EB; color:#fff; font-size:13px; cursor:pointer;">Unduh Gambar</button>
-      </div>
+      <!-- Kanvas mewarnai (muncul setelah tema dipilih) -->
+      <div id="dt-coloring-area" style="display:none;">
+        <div style="text-align:center; margin-bottom:10px;">
+          <button type="button" id="dt-back-btn" style="padding:8px 16px; border-radius:8px; border:1.5px solid #B9C7DA; background:#fff; font-size:13px; cursor:pointer;">&larr; Pilih Hewan Lain</button>
+          <h4 id="dt-theme-title" style="margin:10px 0 4px; color:#0B1A3A;"></h4>
+        </div>
 
-      <div style="display:flex; justify-content:center;">
-        <canvas id="dt-canvas" width="800" height="560" style="max-width:100%; width:800px; height:auto; aspect-ratio:800/560; background:#FFFFFF; border:2px solid #B9C7DA; border-radius:14px; touch-action:none; cursor:crosshair;"></canvas>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:center; background:#FFFFFF; border:1px solid rgba(13,27,42,0.1); border-radius:14px; padding:14px 18px; margin-bottom:18px;">
+          <div id="dt-palette" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+          <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#3C4A5C;">
+            Warna kustom
+            <input type="color" id="dt-custom-color" value="#2E86EB" style="width:34px; height:34px; border:none; border-radius:8px; padding:0; cursor:pointer;">
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#3C4A5C;">
+            Ukuran kuas
+            <input type="range" id="dt-brush-size" min="2" max="40" value="10">
+          </label>
+          <button type="button" id="dt-eraser-btn" style="padding:8px 16px; border-radius:8px; border:1.5px solid #B9C7DA; background:#F7FAFD; font-size:13px; cursor:pointer;">Penghapus</button>
+          <button type="button" id="dt-undo-btn" style="padding:8px 16px; border-radius:8px; border:1.5px solid #B9C7DA; background:#F7FAFD; font-size:13px; cursor:pointer;">Undo</button>
+          <button type="button" id="dt-clear-btn" style="padding:8px 16px; border-radius:8px; border:none; background:#E14B4B; color:#fff; font-size:13px; cursor:pointer;">Bersihkan</button>
+          <button type="button" id="dt-download-btn" style="padding:8px 16px; border-radius:8px; border:none; background:#2E86EB; color:#fff; font-size:13px; cursor:pointer;">Selesai &amp; Unduh</button>
+        </div>
+
+        <div style="display:flex; justify-content:center;">
+          <canvas id="dt-canvas" width="800" height="560" style="max-width:100%; width:800px; height:auto; aspect-ratio:800/560; background:#FFFFFF; border:2px solid #B9C7DA; border-radius:14px; touch-action:none; cursor:crosshair;"></canvas>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Popup selamat -->
+  <div id="dt-popup" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+    <div style="background:linear-gradient(135deg,#2E86EB,#152D63); border-radius:20px; padding:28px 30px; width:88%; max-width:380px; text-align:center; color:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.3); position:relative;">
+      <button type="button" id="dt-popup-close-x" aria-label="Tutup" style="position:absolute; top:10px; right:14px; background:none; border:none; color:#fff; font-size:22px; line-height:1; cursor:pointer;">&times;</button>
+      <h3 style="margin:6px 0 10px;">Selamat! 🎉</h3>
+      <p id="dt-popup-text" style="font-size:14px; line-height:1.6; margin-bottom:18px;"></p>
+      <button type="button" id="dt-popup-close" style="padding:10px 22px; border-radius:999px; border:none; background:#fff; color:#152D63; font-weight:600; cursor:pointer;">Selamat Yaa!!!</button>
+    </div>
+  </div>
+
   <style>
-    .dt-template-btn{
+    .dt-theme-btn{
       padding:9px 20px; border-radius:999px; border:1.5px solid #B9C7DA; background:#FFFFFF;
       font-size:13px; font-weight:600; color:#1E4FAE; cursor:pointer; transition:background .15s, color .15s;
     }
-    .dt-template-btn.active, .dt-template-btn:hover{ background:#2E86EB; color:#fff; border-color:#2E86EB; }
+    .dt-theme-btn.active, .dt-theme-btn:hover{ background:#2E86EB; color:#fff; border-color:#2E86EB; }
     .dt-swatch{
       width:28px; height:28px; border-radius:50%; border:2px solid rgba(13,27,42,0.15); cursor:pointer; padding:0;
     }
@@ -337,22 +353,30 @@
   </style>
   <script>
   (function(){
+    const themeButtonsEl = document.getElementById('dt-theme-buttons');
+    const coloringArea = document.getElementById('dt-coloring-area');
+    const backBtn = document.getElementById('dt-back-btn');
+    const themeTitleEl = document.getElementById('dt-theme-title');
     const canvas = document.getElementById('dt-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     const paletteEl = document.getElementById('dt-palette');
     const customColorEl = document.getElementById('dt-custom-color');
     const brushSizeEl = document.getElementById('dt-brush-size');
     const eraserBtn = document.getElementById('dt-eraser-btn');
+    const undoBtn = document.getElementById('dt-undo-btn');
     const clearBtn = document.getElementById('dt-clear-btn');
     const downloadBtn = document.getElementById('dt-download-btn');
-    const templateBtns = document.querySelectorAll('.dt-template-btn');
+    const popup = document.getElementById('dt-popup');
+    const popupText = document.getElementById('dt-popup-text');
 
     const colors = ['#0B1A3A','#2E86EB','#1E4FAE','#00B4A6','#F2C94C','#EB5757','#27AE60','#9B51E0','#F2994A','#FFFFFF'];
     let currentColor = '#2E86EB';
-    let currentTemplate = 'blank';
     let isErasing = false;
     let drawing = false;
     let last = null;
+    let currentThemeName = '';
+    let restoreStack = [];
+    let backgroundImage = null;
 
     colors.forEach(c => {
       const b = document.createElement('button');
@@ -364,6 +388,7 @@
         currentColor = c;
         isErasing = false;
         eraserBtn.style.background = '#F7FAFD';
+        eraserBtn.style.color = '#000';
         document.querySelectorAll('.dt-swatch').forEach(s => s.classList.remove('active'));
         b.classList.add('active');
       });
@@ -374,6 +399,7 @@
       currentColor = e.target.value;
       isErasing = false;
       eraserBtn.style.background = '#F7FAFD';
+      eraserBtn.style.color = '#000';
       document.querySelectorAll('.dt-swatch').forEach(s => s.classList.remove('active'));
     });
 
@@ -383,88 +409,77 @@
       eraserBtn.style.color = isErasing ? '#fff' : '#000';
     });
 
-    function drawTemplate(name){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = '#0B1A3A';
-      ctx.lineJoin = 'round';
-      ctx.lineCap = 'round';
+    function saveState(){
+      restoreStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      if(restoreStack.length > 30) restoreStack.shift();
+    }
 
-      if(name === 'fish'){
-        ctx.beginPath();
-        ctx.ellipse(360,280,220,130,0,0,Math.PI*2);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(580,280);
-        ctx.lineTo(700,190);
-        ctx.lineTo(700,370);
-        ctx.closePath();
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(220,240,16,0,Math.PI*2);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(260,150);
-        ctx.quadraticCurveTo(340,90,420,150);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(260,410);
-        ctx.quadraticCurveTo(340,470,420,410);
-        ctx.stroke();
-      } else if(name === 'turtle'){
-        ctx.beginPath();
-        ctx.ellipse(400,300,200,140,0,0,Math.PI*2);
-        ctx.stroke();
-        for(let i=-1;i<=1;i++){
-          ctx.beginPath();
-          ctx.ellipse(400+i*90,300,60,80,0,0,Math.PI*2);
-          ctx.stroke();
-        }
-        ctx.beginPath();
-        ctx.ellipse(190,240,45,35,0.3,0,Math.PI*2);
-        ctx.stroke();
-        const flippers = [[220,180,120,110],[220,420,120,490],[580,180,680,110],[580,420,680,490]];
-        flippers.forEach(f=>{
-          ctx.beginPath();
-          ctx.moveTo(f[0],f[1]);
-          ctx.quadraticCurveTo((f[0]+f[2])/2, (f[1]+f[3])/2 + (f[3]>f[1]?40:-40), f[2],f[3]);
-          ctx.stroke();
-        });
-      } else if(name === 'coral'){
-        function branch(x,y,len,angle,depth){
-          if(depth === 0) return;
-          const x2 = x + Math.cos(angle)*len;
-          const y2 = y - Math.sin(angle)*len;
-          ctx.beginPath();
-          ctx.moveTo(x,y);
-          ctx.lineTo(x2,y2);
-          ctx.stroke();
-          branch(x2,y2,len*0.72,angle-0.4,depth-1);
-          branch(x2,y2,len*0.72,angle+0.4,depth-1);
-        }
-        branch(260,520,90,Math.PI/2,5);
-        branch(430,520,80,Math.PI/2,5);
-        branch(560,520,70,Math.PI/2-0.2,4);
-        ctx.beginPath();
-        ctx.moveTo(60,540);
-        ctx.lineTo(740,540);
-        ctx.stroke();
+    undoBtn.addEventListener('click', () => {
+      if(restoreStack.length > 1){
+        restoreStack.pop();
+        ctx.putImageData(restoreStack[restoreStack.length - 1], 0, 0);
       }
-    }
-
-    function setTemplate(name){
-      currentTemplate = name;
-      templateBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.template === name));
-      drawTemplate(name);
-    }
-
-    templateBtns.forEach(btn => {
-      btn.addEventListener('click', () => setTemplate(btn.dataset.template));
     });
 
-    clearBtn.addEventListener('click', () => drawTemplate(currentTemplate));
+    function loadTheme(themeId, themeName){
+      currentThemeName = themeName;
+      themeTitleEl.textContent = 'Mewarnai: ' + themeName;
+      backgroundImage = new Image();
+      backgroundImage.src = 'images/' + themeId + '.png';
+      backgroundImage.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        restoreStack = [];
+        saveState();
+      };
+      backgroundImage.onerror = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        restoreStack = [];
+        saveState();
+      };
+    }
+
+    // Muat daftar tema dari data/themes.json (nama-nama ikan/binatang laut asli)
+    fetch('data/themes.json')
+      .then(r => r.json())
+      .then(data => {
+        data.themes.forEach(theme => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'dt-theme-btn';
+          btn.textContent = theme.name;
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.dt-theme-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            coloringArea.style.display = 'block';
+            loadTheme(theme.id, theme.name);
+            coloringArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+          themeButtonsEl.appendChild(btn);
+        });
+      })
+      .catch(() => {
+        themeButtonsEl.innerHTML = '<p style="color:#E14B4B;">Gagal memuat daftar hewan laut.</p>';
+      });
+
+    backBtn.addEventListener('click', () => {
+      coloringArea.style.display = 'none';
+      document.querySelectorAll('.dt-theme-btn').forEach(b => b.classList.remove('active'));
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if(backgroundImage && backgroundImage.complete){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        saveState();
+      }
+    });
 
     function getPos(e){
       const rect = canvas.getBoundingClientRect();
@@ -494,7 +509,9 @@
       last = pos;
       e.preventDefault();
     }
-    function endDraw(){ drawing = false; }
+    function endDraw(){
+      if(drawing){ drawing = false; saveState(); }
+    }
 
     canvas.addEventListener('mousedown', startDraw);
     canvas.addEventListener('mousemove', moveDraw);
@@ -505,12 +522,20 @@
 
     downloadBtn.addEventListener('click', () => {
       const link = document.createElement('a');
-      link.download = 'mewarnai-laut.png';
+      link.download = 'mewarnai-' + (currentThemeName || 'laut') + '.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
+
+      popupText.textContent = 'Kamu sudah selesai mewarnai ' + currentThemeName + ' dengan baik! Ayo warnai hewan laut lainnya.';
+      popup.style.display = 'flex';
     });
 
-    setTemplate('blank');
+    function closePopup(){
+      popup.style.display = 'none';
+    }
+    document.getElementById('dt-popup-close').addEventListener('click', closePopup);
+    document.getElementById('dt-popup-close-x').addEventListener('click', closePopup);
+    popup.addEventListener('click', (e) => { if(e.target === popup) closePopup(); });
   })();
   </script>
 
