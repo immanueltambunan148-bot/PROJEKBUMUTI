@@ -108,10 +108,11 @@
   /* HERO 2026 - Konservasi Penyu */
   .hero-2026{
     position:relative; overflow:hidden;
-    min-height:460px;
-    display:flex; flex-direction:column; justify-content:flex-start;
+    min-height:calc(100vh - 78px);
+    display:flex; flex-direction:column; justify-content:center;
     color:var(--white);
   }
+  @media (max-width:720px){ .hero-2026{ min-height:auto; padding-bottom:40px; } }
   .hero-2026 .hero-bg{
     position:absolute; inset:0; z-index:0;
     background:url('assets/images/pengmas2026-reef.jpg') center 30%/cover no-repeat;
@@ -127,7 +128,7 @@
   }
   .hero-2026 .hero-text{
     position:relative; z-index:3;
-    padding:70px 5vw 0; max-width:640px;
+    padding:0 5vw; max-width:640px;
   }
   .hero-2026 .hero-eyebrow{
     display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px;
