@@ -105,30 +105,56 @@
     font-size:15.5px; line-height:1.85; color:#3C4A5C; margin-bottom:20px;
   }
 
-  /* PENGMAS 2025 feature cards */
-  .feature-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  /* single-column layout for programs page */
+  .info-single{ max-width:1100px; margin:0 auto; }
+  .eyebrow-small{
+    display:block; font-family:var(--font-body); font-size:12px; letter-spacing:3px;
+    font-weight:600; color:var(--blue-mid); margin-bottom:14px;
   }
-  @media (max-width:640px){ .feature-grid{grid-template-columns:1fr;} }
-  .feature-card{
-    display:block; border-radius:14px; overflow:hidden;
-    border:1px solid var(--line); background:var(--white);
-    box-shadow:0 6px 18px rgba(11,26,58,0.06);
-    transition:transform .2s, box-shadow .2s;
+
+  /* explanation box */
+  .explain-box{
+    background:#F7FAFC; border-left:4px solid var(--blue-bright); border-radius:10px;
+    padding:26px 28px; margin-bottom:40px;
   }
-  .feature-card:hover{ transform:translateY(-4px); box-shadow:0 14px 28px rgba(11,26,58,0.14); }
-  .feature-card .thumb{
-    height:130px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:36px;
-    background:linear-gradient(135deg, var(--blue-bright), var(--blue-deep));
+  .explain-box h3{
+    font-family:var(--font-display); font-weight:700; font-size:19px; color:var(--navy); margin-bottom:10px;
   }
-  .feature-card .thumb span{ filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
-  .feature-card .body{ padding:18px 20px 22px; }
-  .feature-card h3{
-    font-family:var(--font-display); font-size:17px; color:var(--navy); margin-bottom:6px;
+  .explain-box p{ font-size:14.5px; line-height:1.8; color:#3C4A5C; }
+
+  /* PENGMAS 2025 bento feature grid */
+  .bento-grid{
+    display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:repeat(2,1fr);
+    gap:18px; height:440px;
   }
-  .feature-card p{ font-size:13.5px; color:#5C6B80; line-height:1.6; }
+  @media (max-width:720px){
+    .bento-grid{ grid-template-columns:1fr; grid-template-rows:none; height:auto; }
+    .bento-card{ height:200px; }
+    .bento-card.large{ height:240px; }
+  }
+  .bento-card{
+    position:relative; display:flex; align-items:flex-end; overflow:hidden;
+    border-radius:16px; padding:24px; color:var(--white);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .bento-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px rgba(11,26,58,0.25); }
+  .bento-card.large{ grid-row:1 / 3; }
+  .bento-card::before{ content:""; position:absolute; inset:0; z-index:0; }
+  .bento-card::after{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(6,15,35,0) 30%, rgba(4,10,26,0.85) 100%);
+  }
+  .bento-card.card-eko::before{ background:linear-gradient(135deg,#0B3D5C 0%,#146E8C 45%,#1E9E8C 100%); }
+  .bento-card.card-puzzle::before{ background:linear-gradient(135deg,#1E4FAE 0%,#2E86EB 100%); }
+  .bento-card.card-draw::before{ background:linear-gradient(135deg,#0E7A6B 0%,#1EB090 100%); }
+  .bento-card .icon-watermark{
+    position:absolute; top:16px; right:18px; font-size:42px; opacity:0.3; z-index:1;
+  }
+  .bento-card h3{
+    position:relative; z-index:2;
+    font-family:var(--font-display); font-weight:700; font-size:19px;
+    letter-spacing:0.5px; text-transform:uppercase; text-shadow:0 2px 10px rgba(0,0,0,0.4);
+  }
 
   footer{
     padding:30px 5vw; border-top:1px solid var(--line);
@@ -162,36 +188,27 @@
   </div>
 
   <section class="info">
-    <div class="info-grid">
-      <div class="info-label">
-        <span>ANGKATAN</span>
-        Pengmas 2025
+    <div class="info-single">
+      <span class="eyebrow-small">ANGKATAN 2025</span>
+
+      <div class="explain-box">
+        <h3>Tentang Pengmas 2025</h3>
+        <p>Pengmas 2025 menghadirkan modul edukasi interaktif seputar ekosistem laut Indonesia, mencakup pengenalan terumbu karang, padang lamun, hutan bakau, dan estuari, yang dikemas melalui aktivitas belajar sambil bermain berupa penjelajahan ekosistem, permainan puzzle, dan kegiatan menggambar. Program ini disusun untuk kegiatan Pengabdian Masyarakat 2025, dengan tujuan menumbuhkan kepedulian dan literasi kelautan sejak dini.</p>
       </div>
-      <div class="info-body">
-        <p>Modul edukasi interaktif seputar ekosistem laut Indonesia, disusun untuk kegiatan Pengabdian Masyarakat 2025. Pilih salah satu modul di bawah untuk mulai menjelajah.</p>
-        <div class="feature-grid">
-          <a class="feature-card" href="programs-2025/Ekosistem.html">
-            <div class="thumb"><span>🌊</span></div>
-            <div class="body">
-              <h3>Ekosistem Laut</h3>
-              <p>Jelajahi terumbu karang, padang lamun, hutan bakau, dan estuari perairan Indonesia.</p>
-            </div>
-          </a>
-          <a class="feature-card" href="programs-2025/Drawing.html">
-            <div class="thumb"><span>🎨</span></div>
-            <div class="body">
-              <h3>Menggambar</h3>
-              <p>Aktivitas mewarnai biota dan kehidupan laut untuk mengenalkan keanekaragaman hayati.</p>
-            </div>
-          </a>
-          <a class="feature-card" href="programs-2025/Puzzle.html">
-            <div class="thumb"><span>🧩</span></div>
-            <div class="body">
-              <h3>Puzzle</h3>
-              <p>Susun puzzle bertema perairan Indonesia dengan berbagai tingkat kesulitan.</p>
-            </div>
-          </a>
-        </div>
+
+      <div class="bento-grid">
+        <a class="bento-card large card-eko" href="programs-2025/Ekosistem.html">
+          <span class="icon-watermark">🌊</span>
+          <h3>Ekosistem Laut</h3>
+        </a>
+        <a class="bento-card card-puzzle" href="programs-2025/Puzzle.html">
+          <span class="icon-watermark">🧩</span>
+          <h3>Puzzle!</h3>
+        </a>
+        <a class="bento-card card-draw" href="programs-2025/Drawing.html">
+          <span class="icon-watermark">🎨</span>
+          <h3>Menggambar</h3>
+        </a>
       </div>
     </div>
   </section>
