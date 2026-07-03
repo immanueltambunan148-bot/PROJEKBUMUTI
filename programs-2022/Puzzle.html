@@ -215,7 +215,7 @@
         }
         h1 {
             text-align: center;
-            margin-bottom: 2cm;
+            margin-bottom: 16px;
         }
         #theme-buttons {
             display: grid;
@@ -230,7 +230,7 @@
         p {
             font-size: 24px;
             text-align: justify;
-            line-height: 2;
+            line-height: 1.6;
             color: black;
         }      
         .custom-paragraph {
@@ -349,9 +349,9 @@
   .site-header nav.site-nav > ul > li:focus-within .dropdown{
     opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
   }
-  .site-header .dropdown a{
-    display:block; color:var(--oi-navy); font-size:14px; font-weight:500;
-    padding:12px 20px; opacity:1; transition:background .15s;
+  .site-header nav.site-nav .dropdown a{
+    display:block; color:var(--oi-navy) !important; font-size:14px; font-weight:500;
+    padding:12px 20px; opacity:1 !important; transition:background .15s;
   }
   .site-header .dropdown a:hover{background:#EEF3FC;}
   .site-header .dropdown li + li{border-top:1px solid var(--oi-line);}
@@ -457,7 +457,7 @@
 
     <footer id="newsletter" class="simple-footer" style="padding:36px 5vw; text-align:center; background:linear-gradient(180deg, #152D63 0%, #0B1A3A 100%);">
     <div class="container">
-      <p style="color:#C7D8F2; font-size:13px; margin:0;">© 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB</p>
+      <p style="color:#C7D8F2; font-size:13px; margin:0; text-align:center !important;">© 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB</p>
     </div>
   </footer>
     <!-- Audio Player -->
