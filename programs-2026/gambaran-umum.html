@@ -31,13 +31,39 @@
   }
   .banner span{ display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px; }
   .banner h1{ font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,42px); }
-  section{ padding:80px 5vw; max-width:800px; margin:0 auto; text-align:center; }
-  .placeholder-box{
-    border:1.5px dashed #B9C7DA; border-radius:14px; padding:40px 28px;
-    background:#F7FAFD; color:#7A8AA0; font-size:15px; line-height:1.8;
+  section{ padding:70px 5vw; max-width:900px; margin:0 auto; }
+
+  /* topic list */
+  .topic-list{ display:flex; flex-direction:column; }
+  .topic-item{
+    display:grid; grid-template-columns:44px 1fr 220px; gap:20px; align-items:start;
+    padding:26px 0; border-top:1px solid var(--line);
   }
-  .placeholder-box b{ color:var(--blue-mid); }
-  a.back{ display:inline-block; margin-top:24px; color:var(--blue-mid); font-weight:600; font-size:14px; }
+  .topic-item:last-child{ border-bottom:1px solid var(--line); }
+  @media (max-width:680px){ .topic-item{ grid-template-columns:40px 1fr; } .topic-photo{ display:none; } }
+  .topic-icon{
+    width:40px; height:40px; border-radius:50%; background:#EAF4EC; color:#2E8B57;
+    display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .topic-text h3{ font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .topic-text p{ font-size:13.5px; color:#5A6B7D; line-height:1.6; }
+  .topic-photo{ width:220px; height:96px; border-radius:10px; overflow:hidden; }
+  .topic-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* map section */
+  .map-heading{ text-align:center; margin:70px 0 32px; }
+  .map-heading span{ display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:var(--blue-mid); margin-bottom:10px; }
+  .map-heading h2{ font-family:var(--font-display); font-size:clamp(22px,3vw,28px); font-weight:700; color:var(--navy); }
+  .map-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:680px){ .map-grid{ grid-template-columns:1fr; } }
+  .map-card{ border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#F7FAFD; }
+  .map-card img{ width:100%; display:block; }
+  .map-card .map-caption{ padding:16px 18px; }
+  .map-card .map-caption h4{ font-family:var(--font-display); font-size:14.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .map-card .map-caption p{ font-size:12.5px; color:#7A8AA0; line-height:1.5; }
+
+  .back-wrap{ text-align:center; margin-top:56px; }
+  a.back{ display:inline-block; color:var(--blue-mid); font-weight:600; font-size:14px; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
 </style>
 </head>
@@ -60,10 +86,68 @@
   </div>
 
   <section>
-    <div class="placeholder-box">
-      <b>Placeholder:</b> konten gambaran umum untuk Pengmas 2026 belum diisi. Halaman ini siap diisi langsung oleh tim melalui repositori.
+    <div class="topic-list">
+      <div class="topic-item">
+        <div class="topic-icon">〜</div>
+        <div class="topic-text">
+          <h3>Laut Sawu</h3>
+          <p>Kondisi geografis, oseanografi, dan ekosistem Laut Sawu.</p>
+        </div>
+        <div class="topic-photo"><img src="images/laut-sawu.jpg" alt="Laut Sawu"></div>
+      </div>
+
+      <div class="topic-item">
+        <div class="topic-icon">🐢</div>
+        <div class="topic-text">
+          <h3>Biologi Penyu</h3>
+          <p>Jenis, siklus hidup, perilaku, dan karakteristik penyu.</p>
+        </div>
+        <div class="topic-photo"><img src="images/biologi-penyu.jpg" alt="Biologi Penyu"></div>
+      </div>
+
+      <div class="topic-item">
+        <div class="topic-icon">🤲</div>
+        <div class="topic-text">
+          <h3>Konservasi</h3>
+          <p>Pentingnya konservasi penyu dan upaya perlindungan.</p>
+        </div>
+        <div class="topic-photo"></div>
+      </div>
+
+      <div class="topic-item">
+        <div class="topic-icon">🏠</div>
+        <div class="topic-text">
+          <h3>Profil Desa</h3>
+          <p>Gambaran umum Desa Eilogo, potensi, dan masyarakat.</p>
+        </div>
+        <div class="topic-photo"><img src="images/profil-desa.jpg" alt="Profil Desa Eilogo"></div>
+      </div>
     </div>
-    <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
+
+    <div class="map-heading">
+      <span>PETA WILAYAH</span>
+      <h2>Lokasi Kegiatan</h2>
+    </div>
+    <div class="map-grid">
+      <div class="map-card">
+        <img src="images/peta-pulau-sabu-raijua.png" alt="Peta Pulau Sabu dan Raijua">
+        <div class="map-caption">
+          <h4>Pulau Sabu &amp; Raijua</h4>
+          <p>Letak Pulau Sabu dan Raijua di gugusan Kepulauan Nusa Tenggara Timur.</p>
+        </div>
+      </div>
+      <div class="map-card">
+        <img src="images/peta-desa-eilogo.png" alt="Peta Desa Eilogo">
+        <div class="map-caption">
+          <h4>Desa Eilogo</h4>
+          <p>Lokasi Desa Eilogo di sisi selatan Pulau Sabu, lokasi kegiatan Pengmas 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-wrap">
+      <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
+    </div>
   </section>
 
   <footer>
