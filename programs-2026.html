@@ -131,12 +131,13 @@
 
   /* HERO 2026 - Konservasi Penyu */
   .hero-2026{
-    position:relative; overflow:hidden;
+    position:relative;
     min-height:calc(100vh - 78px);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     color:var(--white); text-align:center;
+    padding-top:44px;
   }
-  @media (max-width:720px){ .hero-2026{ min-height:auto; padding:50px 0 40px; } }
+  @media (max-width:720px){ .hero-2026{ min-height:auto; padding:36px 0 40px; } }
   .hero-2026 .hero-bg{
     position:absolute; inset:0; z-index:0;
     background:url('assets/images/pengmas2026-reef.jpg') center 30%/cover no-repeat;
@@ -148,7 +149,7 @@
   .hero-2026 .hero-turtle{
     position:relative; z-index:3;
     width:220px; max-width:38vw;
-    margin:26px 0 6px;
+    margin:40px 0 16px;
     filter:drop-shadow(0 18px 30px rgba(0,0,0,0.45));
   }
   .hero-2026 .hero-text{
@@ -180,7 +181,9 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
     padding:22px 10px; text-align:center;
     border-right:1px solid rgba(11,26,58,0.1);
+    cursor:pointer; transition:background .15s;
   }
+  .hero-menu-item:hover{ background:rgba(46,134,235,0.08); }
   .hero-menu-item:nth-child(4){ border-right:none; }
   @media (max-width:720px){
     .hero-menu-item:nth-child(2){ border-right:none; }
@@ -218,8 +221,8 @@
         <li>
           <a href="javascript:void(0)" class="has-dropdown">Programs<span class="caret"></span></a>
           <ul class="dropdown">
-            <li><a href="programs-2025.html">Pengmas 2025</a></li>
             <li><a href="programs-2026.html">Pengmas 2026</a></li>
+            <li><a href="programs-2025.html">Pengmas 2025</a></li>
           </ul>
         </li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -243,22 +246,22 @@
     <img class="hero-turtle" src="assets/images/pengmas2026-turtle.png" alt="Penyu laut">
 
     <div class="hero-menu">
-      <div class="hero-menu-item">
+      <a class="hero-menu-item" href="programs-2026/gambaran-umum.html">
         <div class="circle-icon">📄</div>
         <span class="m-label">Gambaran<br>umum</span>
-      </div>
-      <div class="hero-menu-item">
+      </a>
+      <a class="hero-menu-item" href="programs-2026/pelatihan.html">
         <div class="circle-icon">🛟</div>
         <span class="m-label">Pelatihan</span>
-      </div>
-      <div class="hero-menu-item">
+      </a>
+      <a class="hero-menu-item" href="programs-2026/implementasi-lapangan.html">
         <div class="circle-icon">📋</div>
         <span class="m-label">Implementasi<br>Lapangan</span>
-      </div>
-      <div class="hero-menu-item">
+      </a>
+      <a class="hero-menu-item" href="programs-2026/monitoring-evaluasi.html">
         <div class="circle-icon">🔍</div>
         <span class="m-label">Monitoring &<br>Evaluasi</span>
-      </div>
+      </a>
     </div>
   </section>
 

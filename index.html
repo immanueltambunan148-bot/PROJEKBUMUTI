@@ -150,6 +150,19 @@
     letter-spacing:1px;
     text-shadow:0 4px 30px rgba(0,0,0,0.45);
   }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:26px; padding:14px 28px; border-radius:999px;
+    background:rgba(255,255,255,0.12); border:1.5px solid rgba(255,255,255,0.55);
+    backdrop-filter:blur(6px);
+    color:var(--white); font-family:var(--font-body); font-weight:600; font-size:14px;
+    transition:background .2s, transform .2s;
+  }
+  .hero-cta:hover{ background:rgba(255,255,255,0.22); transform:translateY(-2px); }
+  .hero-cta .badge{
+    background:var(--blue-bright); color:var(--white); font-size:10.5px; font-weight:700;
+    letter-spacing:1px; padding:4px 10px; border-radius:999px;
+  }
 
   /* ABOUT */
   .about{
@@ -235,8 +248,8 @@
         <li>
           <a href="javascript:void(0)" class="has-dropdown">Programs<span class="caret"></span></a>
           <ul class="dropdown">
-            <li><a href="programs-2025.html">Pengmas 2025</a></li>
             <li><a href="programs-2026.html">Pengmas 2026</a></li>
+            <li><a href="programs-2025.html">Pengmas 2025</a></li>
           </ul>
         </li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -258,6 +271,11 @@
     <div class="hero-text">
       <span class="eyebrow">INDONESIA</span>
       <h1>OCEAN LITERACY</h1>
+      <br>
+      <a class="hero-cta" href="programs-2026.html">
+        <span class="badge">BARU</span>
+        Lihat Program Pengmas 2026 &rarr;
+      </a>
     </div>
   </section>
 
