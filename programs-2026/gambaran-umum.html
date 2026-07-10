@@ -81,6 +81,29 @@
 
   .back-wrap{ text-align:center; padding:56px 5vw; }
   a.back{ display:inline-block; color:var(--blue-mid); font-weight:600; font-size:14px; }
+
+  /* PROFIL DESA - layout khusus */
+  .profil-wrap{ position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; }
+  .profil-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(90deg, var(--blue-bright), var(--blue-mid));
+    color:var(--white); font-family:var(--font-body); font-weight:700; font-size:13px;
+    padding:9px 20px; border-radius:999px; margin-bottom:22px;
+  }
+  .profil-title{
+    font-family:var(--font-display); font-weight:800; font-size:clamp(30px,4.2vw,50px);
+    letter-spacing:0.5px; text-transform:uppercase; margin-bottom:28px;
+  }
+  .profil-card{
+    display:grid; grid-template-columns:1fr 1fr; align-items:stretch;
+    background:rgba(15,45,85,0.55); border:1px solid rgba(255,255,255,0.15);
+    border-radius:14px; overflow:hidden;
+  }
+  @media (max-width:780px){ .profil-card{ grid-template-columns:1fr; } }
+  .profil-card-img{ min-height:280px; }
+  .profil-card-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .profil-card-text{ padding:36px 40px; display:flex; flex-direction:column; justify-content:center; gap:24px; }
+  .profil-card-text p{ font-size:15px; line-height:1.8; color:#E4EDF8; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
 </style>
 </head>
@@ -102,7 +125,6 @@
     <div class="story-overlay"></div>
     <div class="story-inner">
       <div>
-        <span class="story-num">01 &mdash; LOKASI</span>
         <h2>Pulau Sabu Raijua</h2>
         <p>Pulau Sabu Raijua terletak di bagian selatan Provinsi Nusa Tenggara Timur dan berbatasan langsung dengan Laut Sawu, perairan yang dikenal memiliki keanekaragaman hayati laut yang tinggi.</p>
         <p>Wilayah pesisirnya menjadi rumah bagi berbagai ekosistem laut serta jalur jelajah dan lokasi peneluran penyu, menjadikannya kawasan penting untuk kegiatan konservasi berbasis masyarakat.</p>
@@ -114,13 +136,12 @@
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow"></span></div>
   </section>
 
-  <section class="story-section" id="gambaran-penyu">
+  <section class="story-section" id="biologi-penyu">
     <div class="story-bg"></div>
     <div class="story-overlay"></div>
     <div class="story-inner">
       <div>
-        <span class="story-num">02 &mdash; BIOLOGI</span>
-        <h2>Gambaran Penyu</h2>
+        <h2>Biologi Penyu</h2>
         <p>Penyu laut adalah reptil purba yang telah menghuni lautan selama puluhan juta tahun. Beberapa jenis yang umum dijumpai di perairan Indonesia antara lain penyu hijau, penyu sisik, dan penyu lekang.</p>
         <p>Siklus hidupnya panjang dan kompleks, mulai dari telur, tukik, hingga dewasa, dengan perilaku migrasi jarak jauh antara wilayah mencari makan dan pantai peneluran tempat mereka menetas.</p>
       </div>
@@ -136,7 +157,6 @@
     <div class="story-overlay"></div>
     <div class="story-inner">
       <div>
-        <span class="story-num">03 &mdash; KONSERVASI</span>
         <h2>Pentingnya Konservasi Penyu</h2>
         <p>Penyu berperan menjaga keseimbangan ekosistem laut, mulai dari padang lamun hingga terumbu karang. Kehadirannya menjadi indikator kesehatan perairan pesisir.</p>
         <p>Namun populasi penyu terus menghadapi ancaman, mulai dari perburuan telur, kerusakan habitat pantai, hingga tangkapan sampingan nelayan. Upaya konservasi berbasis masyarakat menjadi kunci untuk melindungi penyu sekaligus menjaga keberlanjutan sumber daya laut bagi warga sekitar.</p>
@@ -151,15 +171,17 @@
   <section class="story-section" id="profil-desa">
     <div class="story-bg"></div>
     <div class="story-overlay"></div>
-    <div class="story-inner">
-      <div>
-        <span class="story-num">04 &mdash; MASYARAKAT</span>
-        <h2>Profil Desa</h2>
-        <p>Desa Eilogo berada di sisi selatan Pulau Sabu, dengan garis pantai yang menjadi salah satu lokasi jelajah dan peneluran penyu di kawasan Laut Sawu.</p>
-        <p>Sebagian besar masyarakatnya menggantungkan hidup dari sektor perikanan dan pertanian lahan kering, menjadikan program pemberdayaan konservasi penyu selaras dengan potensi dan kebutuhan warga setempat.</p>
-      </div>
-      <div class="story-photo">
-        <img src="images/profil-desa.jpg" alt="Profil Desa Eilogo">
+    <div class="profil-wrap">
+      <span class="profil-badge">🌱 Persiapan</span>
+      <h2 class="profil-title">Profil Desa Eilogo</h2>
+      <div class="profil-card">
+        <div class="profil-card-img">
+          <img src="images/peta-desa-eilogo.png" alt="Peta Desa Eilogo">
+        </div>
+        <div class="profil-card-text">
+          <p>Desa Eilogo merupakan salah satu dari 12 desa di Kecamatan Sabu Liae, Kabupaten Sabu Raijua, Provinsi Nusa Tenggara Timur. Desa ini berada di Pulau Sabu dan telah berkembang sejak sekitar tahun 1950-an.</p>
+          <p>Masyarakat Desa Eilogo umumnya bekerja sebagai petani, nelayan, dan pembudidaya rumput laut. Didukung oleh potensi Laut Sawu yang kaya akan sumber daya pesisir dan habitat penyu, masyarakat turut berperan dalam berbagai kegiatan konservasi dan pengelolaan lingkungan pesisir.</p>
+        </div>
       </div>
     </div>
   </section>
