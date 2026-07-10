@@ -31,13 +31,29 @@
   }
   .banner span{ display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px; }
   .banner h1{ font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,42px); }
-  section{ padding:80px 5vw; max-width:800px; margin:0 auto; text-align:center; }
-  .placeholder-box{
-    border:1.5px dashed #B9C7DA; border-radius:14px; padding:40px 28px;
-    background:#F7FAFD; color:#7A8AA0; font-size:15px; line-height:1.8;
+  section{ padding:80px 5vw; max-width:800px; margin:0 auto; }
+  .intro{ text-align:center; margin-bottom:40px; color:#3C4A5C; font-size:15px; line-height:1.7; }
+  .doc-list{ display:flex; flex-direction:column; gap:16px; }
+  .doc-item{
+    display:flex; align-items:center; gap:18px;
+    border:1.5px solid var(--line); border-radius:14px; padding:20px 22px;
+    background:#F7FAFD; transition:transform .15s, box-shadow .15s, border-color .15s;
   }
-  .placeholder-box b{ color:var(--blue-mid); }
-  a.back{ display:inline-block; margin-top:24px; color:var(--blue-mid); font-weight:600; font-size:14px; }
+  .doc-item:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(11,26,58,0.1); border-color:var(--blue-bright); }
+  .doc-icon{
+    flex-shrink:0; width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-bright), var(--blue-deep));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;
+  }
+  .doc-info{ flex:1; }
+  .doc-info h3{ font-family:var(--font-display); font-size:15.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .doc-info p{ font-size:13px; color:#7A8AA0; line-height:1.5; }
+  .doc-action{
+    flex-shrink:0; font-size:13px; font-weight:600; color:var(--blue-mid);
+    padding:9px 18px; border:1.5px solid var(--blue-mid); border-radius:999px; white-space:nowrap;
+  }
+  a.back{ display:inline-block; margin-top:32px; color:var(--blue-mid); font-weight:600; font-size:14px; text-align:center; }
+  .back-wrap{ text-align:center; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
 </style>
 </head>
@@ -60,10 +76,49 @@
   </div>
 
   <section>
-    <div class="placeholder-box">
-      <b>Placeholder:</b> konten pelatihan untuk Pengmas 2026 belum diisi. Halaman ini siap diisi langsung oleh tim melalui repositori.
+    <p class="intro">Materi dan dokumen pelatihan untuk Kelompok Masyarakat Konservasi Penyu Desa Eilogo. Klik untuk membuka atau mengunduh setiap dokumen.</p>
+
+    <div class="doc-list">
+      <a class="doc-item" href="modul-pelatihan/monitoring-penyu-desa-eilogo-sabu-liae.pdf" target="_blank">
+        <div class="doc-icon">PDF</div>
+        <div class="doc-info">
+          <h3>Monitoring Penyu di Desa Eilogo, Sabu Liae</h3>
+          <p>Laporan monitoring penyu khusus wilayah Desa Eilogo, Sabu Liae (V1)</p>
+        </div>
+        <div class="doc-action">Buka</div>
+      </a>
+
+      <a class="doc-item" href="modul-pelatihan/protokol-pemantauan-sarang-penyu.pdf" target="_blank">
+        <div class="doc-icon">PDF</div>
+        <div class="doc-info">
+          <h3>Protokol Pemantauan Sarang Penyu</h3>
+          <p>Protocol Nesting Beaches Monitoring - panduan teknis pemantauan pantai peneluran penyu</p>
+        </div>
+        <div class="doc-action">Buka</div>
+      </a>
+
+      <a class="doc-item" href="modul-pelatihan/pemantauan-pantai-habitat-penyu-kkp3k-kdps.pdf" target="_blank">
+        <div class="doc-icon">PDF</div>
+        <div class="doc-info">
+          <h3>Pemantauan Pantai Habitat Penyu (KKP3K KDPS)</h3>
+          <p>Panduan pemantauan pantai habitat penyu di Kawasan Konservasi Perairan, Pesisir, dan Pulau-Pulau Kecil</p>
+        </div>
+        <div class="doc-action">Buka</div>
+      </a>
+
+      <a class="doc-item" href="modul-pelatihan/ykan-modul-masyarakat-booklet.pdf" target="_blank">
+        <div class="doc-icon">PDF</div>
+        <div class="doc-info">
+          <h3>YKAN - Modul Masyarakat (Booklet)</h3>
+          <p>Booklet modul pelatihan masyarakat dari Yayasan Konservasi Alam Nusantara (YKAN)</p>
+        </div>
+        <div class="doc-action">Buka</div>
+      </a>
     </div>
-    <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
+
+    <div class="back-wrap">
+      <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
+    </div>
   </section>
 
   <footer>
