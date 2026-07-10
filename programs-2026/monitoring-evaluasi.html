@@ -31,13 +31,24 @@
   }
   .banner span{ display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px; }
   .banner h1{ font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,42px); }
-  section{ padding:80px 5vw; max-width:800px; margin:0 auto; text-align:center; }
-  .placeholder-box{
-    border:1.5px dashed #B9C7DA; border-radius:14px; padding:40px 28px;
-    background:#F7FAFD; color:#7A8AA0; font-size:15px; line-height:1.8;
+  section{ padding:100px 5vw; max-width:800px; margin:0 auto; text-align:center; }
+  .coming-soon{
+    display:flex; flex-direction:column; align-items:center; gap:18px;
   }
-  .placeholder-box b{ color:var(--blue-mid); }
-  a.back{ display:inline-block; margin-top:24px; color:var(--blue-mid); font-weight:600; font-size:14px; }
+  .coming-soon .icon-circle{
+    width:76px; height:76px; border-radius:50%;
+    background:linear-gradient(135deg, var(--blue-bright), var(--blue-deep));
+    display:flex; align-items:center; justify-content:center; font-size:32px;
+    box-shadow:0 14px 30px rgba(30,79,174,0.25);
+  }
+  .coming-soon h2{
+    font-family:var(--font-display); font-weight:800; font-size:clamp(24px,3.4vw,32px);
+    color:var(--navy); letter-spacing:1px; text-transform:uppercase;
+  }
+  .coming-soon p{
+    font-size:14.5px; color:#7A8AA0; line-height:1.75; max-width:440px;
+  }
+  a.back{ display:inline-block; margin-top:20px; color:var(--blue-mid); font-weight:600; font-size:14px; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
 </style>
 </head>
@@ -60,10 +71,12 @@
   </div>
 
   <section>
-    <div class="placeholder-box">
-      <b>Placeholder:</b> konten monitoring & evaluasi untuk Pengmas 2026 belum diisi. Halaman ini siap diisi langsung oleh tim melalui repositori.
+    <div class="coming-soon">
+      <div class="icon-circle">🚧</div>
+      <h2>Coming Soon</h2>
+      <p>Konten Monitoring & Evaluasi untuk Pengmas 2026 sedang disiapkan. Nantikan pembaruannya di sini.</p>
+      <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
     </div>
-    <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
   </section>
 
   <footer>
