@@ -72,6 +72,37 @@
   a.back{ display:inline-block; margin-top:32px; color:var(--blue-mid); font-weight:600; font-size:14px; text-align:center; }
   .back-wrap{ text-align:center; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
+
+  /* PDF modal viewer */
+  .pdf-modal{
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(6,15,35,0.72); backdrop-filter:blur(3px);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .pdf-modal.open{ display:flex; }
+  .pdf-modal-box{
+    background:var(--white); border-radius:14px; overflow:hidden;
+    width:100%; max-width:900px; height:88vh;
+    display:flex; flex-direction:column;
+    box-shadow:0 30px 60px rgba(0,0,0,0.4);
+  }
+  .pdf-modal-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 20px; border-bottom:1px solid var(--line);
+  }
+  .pdf-modal-head h4{
+    font-family:var(--font-display); font-size:14.5px; color:var(--navy); font-weight:700;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .pdf-modal-actions{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .pdf-modal-actions a{ font-size:12.5px; font-weight:600; color:var(--blue-mid); }
+  .pdf-modal-close{
+    background:none; border:none; cursor:pointer; font-size:22px; line-height:1;
+    color:#7A8AA0; padding:4px 8px;
+  }
+  .pdf-modal-close:hover{ color:var(--navy); }
+  .pdf-modal-box iframe{ flex:1; width:100%; border:none; }
+  @media (max-width:640px){ .pdf-modal-box{ height:92vh; } }
 </style>
 </head>
 <body>
@@ -99,7 +130,7 @@
     <p class="intro">Materi dan dokumen pelatihan untuk Kelompok Masyarakat Konservasi Penyu Desa Eilogo. Klik untuk membuka atau mengunduh setiap dokumen.</p>
 
     <div class="doc-list">
-      <a class="doc-item" href="modul-pelatihan/monitoring-penyu-desa-eilogo-sabu-liae.pdf" target="_blank">
+      <a class="doc-item" href="modul-pelatihan/monitoring-penyu-desa-eilogo-sabu-liae.pdf" onclick="return openPdfModal(event, this.href, 'Monitoring Penyu di Desa Eilogo, Sabu Liae')">
         <div class="doc-icon">PDF</div>
         <div class="doc-info">
           <h3>Monitoring Penyu di Desa Eilogo, Sabu Liae</h3>
@@ -108,7 +139,7 @@
         <div class="doc-action">Buka</div>
       </a>
 
-      <a class="doc-item" href="modul-pelatihan/protokol-pemantauan-sarang-penyu.pdf" target="_blank">
+      <a class="doc-item" href="modul-pelatihan/protokol-pemantauan-sarang-penyu.pdf" onclick="return openPdfModal(event, this.href, 'Protokol Pemantauan Sarang Penyu')">
         <div class="doc-icon">PDF</div>
         <div class="doc-info">
           <h3>Protokol Pemantauan Sarang Penyu</h3>
@@ -117,7 +148,7 @@
         <div class="doc-action">Buka</div>
       </a>
 
-      <a class="doc-item" href="modul-pelatihan/pemantauan-pantai-habitat-penyu-kkp3k-kdps.pdf" target="_blank">
+      <a class="doc-item" href="modul-pelatihan/pemantauan-pantai-habitat-penyu-kkp3k-kdps.pdf" onclick="return openPdfModal(event, this.href, 'Pemantauan Pantai Habitat Penyu (KKP3K KDPS)')">
         <div class="doc-icon">PDF</div>
         <div class="doc-info">
           <h3>Pemantauan Pantai Habitat Penyu (KKP3K KDPS)</h3>
@@ -126,7 +157,7 @@
         <div class="doc-action">Buka</div>
       </a>
 
-      <a class="doc-item" href="modul-pelatihan/ykan-modul-masyarakat-booklet.pdf" target="_blank">
+      <a class="doc-item" href="modul-pelatihan/ykan-modul-masyarakat-booklet.pdf" onclick="return openPdfModal(event, this.href, 'YKAN - Modul Masyarakat (Booklet)')">
         <div class="doc-icon">PDF</div>
         <div class="doc-info">
           <h3>YKAN - Modul Masyarakat (Booklet)</h3>
@@ -141,8 +172,44 @@
     </div>
   </section>
 
+  <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal-box">
+      <div class="pdf-modal-head">
+        <h4 id="pdfModalTitle">Dokumen</h4>
+        <div class="pdf-modal-actions">
+          <a id="pdfModalNewTab" href="#" target="_blank" rel="noopener">Buka di tab baru</a>
+          <button class="pdf-modal-close" aria-label="Tutup" onclick="closePdfModal()">&times;</button>
+        </div>
+      </div>
+      <iframe id="pdfModalFrame" src="" title="Pratinjau dokumen PDF"></iframe>
+    </div>
+  </div>
+
   <footer>
     © 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB
   </footer>
+
+  <script>
+    function openPdfModal(e, url, title){
+      e.preventDefault();
+      document.getElementById('pdfModalFrame').src = url;
+      document.getElementById('pdfModalTitle').textContent = title;
+      document.getElementById('pdfModalNewTab').href = url;
+      document.getElementById('pdfModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      return false;
+    }
+    function closePdfModal(){
+      document.getElementById('pdfModal').classList.remove('open');
+      document.getElementById('pdfModalFrame').src = '';
+      document.body.style.overflow = '';
+    }
+    document.getElementById('pdfModal').addEventListener('click', function(e){
+      if(e.target === this){ closePdfModal(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ closePdfModal(); }
+    });
+  </script>
 </body>
 </html>
