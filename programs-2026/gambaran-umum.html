@@ -85,15 +85,65 @@
   }
   .story-photo img{ width:100%; display:block; }
 
-  /* infografis full slide */
-  .infografis-wrap{
-    position:relative; z-index:2; width:100%; max-width:520px; margin:0 auto;
-    text-align:center;
+  /* OSEANOGRAFI - konten native */
+  .oseano-wrap{ position:relative; z-index:2; width:100%; max-width:1000px; margin:0 auto; text-align:center; }
+  .oseano-title{
+    font-family:var(--font-display); font-weight:800; font-size:clamp(24px,3.4vw,36px);
+    letter-spacing:0.3px; margin-bottom:10px;
   }
-  .infografis-wrap img{
-    width:100%; border-radius:14px; box-shadow:0 30px 60px rgba(0,0,0,0.45);
-    border:4px solid rgba(255,255,255,0.9);
+  .oseano-subtitle{ font-size:14.5px; color:#B9CBE8; margin-bottom:36px; }
+
+  .oseano-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:28px; text-align:left; }
+  @media (max-width:820px){ .oseano-grid{ grid-template-columns:1fr; } }
+
+  .chain-card{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px; padding:28px 20px; display:flex; flex-direction:column; align-items:center; gap:6px;
   }
+  .chain-step{ display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
+  .chain-icon{
+    width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+  }
+  .chain-step span{ font-size:12.5px; font-weight:600; color:#E4EDF8; max-width:160px; }
+  .chain-arrow{ color:#8FC2FF; font-size:14px; }
+
+  .factor-list{ display:flex; flex-direction:column; gap:14px; }
+  .factor-card{
+    display:flex; gap:14px; align-items:flex-start;
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+    border-left:4px solid var(--accent); border-radius:12px; padding:16px 18px;
+  }
+  .factor-icon{
+    flex-shrink:0; width:38px; height:38px; border-radius:50%;
+    background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .factor-card h4{ font-family:var(--font-display); font-size:14.5px; font-weight:700; color:var(--white); margin-bottom:4px; }
+  .factor-card p{ font-size:12.5px; line-height:1.6; color:#C7D5EA; }
+
+  .oseano-quote{
+    margin-top:32px; background:linear-gradient(90deg, var(--blue-mid), var(--blue-bright));
+    border-radius:14px; padding:22px 30px; font-size:14.5px; font-weight:600; line-height:1.6;
+    color:var(--white);
+  }
+
+  /* ALASAN MELESTARIKAN */
+  .alasan-wrap{ position:relative; z-index:2; width:100%; max-width:1000px; margin:0 auto; text-align:center; }
+  .alasan-wrap .oseano-subtitle{ max-width:600px; margin-left:auto; margin-right:auto; }
+  .alasan-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; text-align:left;
+  }
+  .alasan-card{
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+    border-radius:14px; padding:22px 20px;
+  }
+  .alasan-num{
+    width:30px; height:30px; border-radius:50%; background:var(--blue-bright); color:var(--white);
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700;
+    font-size:14px; margin-bottom:14px;
+  }
+  .alasan-card h4{ font-family:var(--font-display); font-size:14.5px; font-weight:700; color:var(--white); margin-bottom:6px; }
+  .alasan-card p{ font-size:12.5px; line-height:1.6; color:#C7D5EA; }
 
   .scroll-hint{
     position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2;
@@ -169,8 +219,73 @@
   <section class="story-section" id="oseanografi-penyu">
     <div class="story-bg"></div>
     <div class="story-overlay"></div>
-    <div class="infografis-wrap">
-      <img src="images/infografis-oseanografi-penyu.jpg" alt="Oseanografi yang Mendukung Kehidupan Penyu">
+    <div class="oseano-wrap">
+      <h2 class="oseano-title">Oseanografi yang Mendukung Kehidupan Penyu</h2>
+      <p class="oseano-subtitle">Mengapa Laut Sawu menjadi habitat yang ideal?</p>
+
+      <div class="oseano-grid">
+        <div class="chain-card">
+          <div class="chain-step">
+            <div class="chain-icon">☀️</div>
+            <span>Matahari</span>
+          </div>
+          <div class="chain-arrow">↓</div>
+          <div class="chain-step">
+            <div class="chain-icon">🌡️</div>
+            <span>Suhu laut hangat</span>
+          </div>
+          <div class="chain-arrow">↓</div>
+          <div class="chain-step">
+            <div class="chain-icon">🌿</div>
+            <span>Lamun tumbuh subur</span>
+          </div>
+          <div class="chain-arrow">↓</div>
+          <div class="chain-step">
+            <div class="chain-icon">🐟</div>
+            <span>Biota laut melimpah</span>
+          </div>
+          <div class="chain-arrow">↓</div>
+          <div class="chain-step">
+            <div class="chain-icon">🐢</div>
+            <span>Penyu memperoleh habitat dan sumber makanan</span>
+          </div>
+        </div>
+
+        <div class="factor-list">
+          <div class="factor-card" style="--accent:#E8734A;">
+            <div class="factor-icon">🌡️</div>
+            <div>
+              <h4>Suhu Laut</h4>
+              <p>Perairan tropis dengan suhu 26&ndash;30&deg;C mendukung pertumbuhan lamun, ketersediaan pakan, dan aktivitas penyu.</p>
+            </div>
+          </div>
+          <div class="factor-card" style="--accent:#2E86EB;">
+            <div class="factor-icon">🌊</div>
+            <div>
+              <h4>Arus Laut</h4>
+              <p>Dipengaruhi Arus Lintas Indonesia (ARLINDO) dan angin muson sehingga membawa nutrien, bantu migrasi dan habitat penyu.</p>
+            </div>
+          </div>
+          <div class="factor-card" style="--accent:#2E9E5B;">
+            <div class="factor-icon">🌱</div>
+            <div>
+              <h4>Klorofil-a</h4>
+              <p>Konsentrasi klorofil-a 0,1&ndash;0,5 mg/m&sup3; &amp; upwelling pada musim timur membuat perairan lebih subur serta kaya makanan.</p>
+            </div>
+          </div>
+          <div class="factor-card" style="--accent:#E0B325;">
+            <div class="factor-icon">🏝️</div>
+            <div>
+              <h4>Produktivitas Perairan</h4>
+              <p>Pantai berpasir, padang lamun, dan terumbu karang saling mendukung sebagai tempat bertelur, mencari makan, dan berlindung penyu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="oseano-quote">
+        Penyu merupakan bagian dari ekosistem pesisir. Kelestariannya bergantung pada kondisi laut yang sehat.
+      </div>
     </div>
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow"></span></div>
   </section>
@@ -210,8 +325,37 @@
   <section class="story-section" id="alasan-melestarikan-penyu">
     <div class="story-bg"></div>
     <div class="story-overlay"></div>
-    <div class="infografis-wrap">
-      <img src="images/infografis-melestarikan-penyu.jpg" alt="Mengapa Kita Harus Melestarikan Penyu">
+    <div class="alasan-wrap">
+      <h2 class="oseano-title">Mengapa Kita Harus Melestarikan Penyu?</h2>
+      <p class="oseano-subtitle">Penyu memiliki peran penting bagi ekosistem laut dan kehidupan manusia. Melindungi penyu berarti menjaga laut tetap sehat dan lestari.</p>
+
+      <div class="alasan-grid">
+        <div class="alasan-card">
+          <div class="alasan-num">1</div>
+          <h4>Menjaga Padang Lamun</h4>
+          <p>Penyu hijau memakan lamun sehingga padang lamun tetap sehat &amp; jadi habitat bagi banyak biota laut.</p>
+        </div>
+        <div class="alasan-card">
+          <div class="alasan-num">2</div>
+          <h4>Menjaga Keseimbangan Ekosistem Laut</h4>
+          <p>Penyu membantu menjaga keseimbangan populasi organisme seperti ubur-ubur, spons, alga, dan lamun.</p>
+        </div>
+        <div class="alasan-card">
+          <div class="alasan-num">3</div>
+          <h4>Menyuburkan Pantai</h4>
+          <p>Telur penyu yang tidak menetas akan terurai menjadi nutrisi alami bagi pantai dan vegetasi pesisir.</p>
+        </div>
+        <div class="alasan-card">
+          <div class="alasan-num">4</div>
+          <h4>Indikator Laut yang Sehat</h4>
+          <p>Populasi penyu mencerminkan kesehatan laut. Jika penyu berkurang, pertanda gangguan pada ekosistem.</p>
+        </div>
+        <div class="alasan-card">
+          <div class="alasan-num">5</div>
+          <h4>Bermanfaat Bagi Masyarakat</h4>
+          <p>Penyu mendukung ekowisata, pendidikan, penelitian, dan mata pencaharian masyarakat berkelanjutan.</p>
+        </div>
+      </div>
     </div>
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow"></span></div>
   </section>
