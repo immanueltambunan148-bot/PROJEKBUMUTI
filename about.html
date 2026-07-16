@@ -127,28 +127,43 @@
     color:var(--navy);
   }
 
-  .team-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:28px;
+  .team-layout{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:start;
   }
-  .member-card{
-    border:1.5px dashed #B9C7DA; border-radius:14px; overflow:hidden;
-    background:#F7FAFD;
+  @media (max-width:860px){ .team-layout{ grid-template-columns:1fr; } }
+
+  .doc-gallery{
+    display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:140px; gap:10px;
   }
-  .member-photo{
-    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-    background:#EAF0F9; color:#8FA3BE; font-size:12.5px; text-align:center; padding:16px;
-    border-bottom:1.5px dashed #B9C7DA;
+  .doc-gallery a{ display:block; border-radius:12px; overflow:hidden; position:relative; }
+  .doc-gallery img{
+    width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;
   }
-  .member-info{ padding:18px 18px 22px; }
-  .member-name{
-    font-family:var(--font-display); font-weight:700; font-size:15.5px; color:var(--navy);
+  .doc-gallery a:hover img{ transform:scale(1.06); }
+  .doc-gallery .wide{ grid-column:span 2; }
+  .doc-caption{
+    margin-top:14px; font-size:12.5px; color:#7A8AA0; line-height:1.6; text-align:center;
   }
-  .member-role{
-    font-size:12px; font-weight:600; color:var(--blue-mid); margin-top:3px; letter-spacing:0.3px;
+  .doc-empty{
+    border:1.5px dashed #B9C7DA; border-radius:14px; background:#F7FAFD;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:#8FA3BE; font-size:13px; padding:40px 20px; min-height:260px;
   }
-  .member-bio{
-    font-size:13px; color:#7A8AA0; line-height:1.6; margin-top:10px;
+
+  .name-list{ list-style:none; }
+  .name-list li{
+    display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);
+  }
+  .name-list li:first-child{ padding-top:0; }
+  .name-list .num{
+    font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--blue-mid);
+    flex-shrink:0; width:26px; padding-top:2px;
+  }
+  .name-list .info b{
+    display:block; font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--navy); margin-bottom:3px;
+  }
+  .name-list .info span{
+    font-size:12.5px; color:#7A8AA0; line-height:1.5;
   }
 
   footer{
@@ -182,7 +197,7 @@
 
   <div class="banner">
     <h1>Tim Pengabdian Masyarakat</h1>
-    <p>Kenali orang-orang di balik program pengabdian masyarakat ini. Bagian foto dan tulisan di bawah masih berupa templet dan siap diisi.</p>
+    <p>Kenali orang-orang di balik program pengabdian masyarakat ini.</p>
   </div>
 
   <!-- ====== TIM PENGMAS 2025 ====== -->
@@ -191,44 +206,79 @@
       <span>PENGMAS 2025</span>
       <h2>Tim Pengmas 2025</h2>
     </div>
-    <div class="team-grid">
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
+    <div class="team-layout">
+      <div>
+        <div class="doc-gallery">
+          <a class="wide" href="assets/images/dokumentasi-2025/doc2025-tim-sortir.jpg" target="_blank">
+            <img src="assets/images/dokumentasi-2025/doc2025-tim-sortir.jpg" alt="Tim menyortir bibit rumput laut bersama masyarakat">
+          </a>
+          <a href="assets/images/dokumentasi-2025/doc2025-petani-tambak.jpg" target="_blank">
+            <img src="assets/images/dokumentasi-2025/doc2025-petani-tambak.jpg" alt="Petani rumput laut di tambak">
+          </a>
+          <a href="assets/images/dokumentasi-2025/doc2025-anak-anak.jpg" target="_blank">
+            <img src="assets/images/dokumentasi-2025/doc2025-anak-anak.jpg" alt="Foto bersama anak-anak Desa">
+          </a>
+          <a href="assets/images/dokumentasi-2025/doc2025-karung-rumputlaut.jpg" target="_blank">
+            <img src="assets/images/dokumentasi-2025/doc2025-karung-rumputlaut.jpg" alt="Karung hasil panen rumput laut di pesisir">
+          </a>
+          <a href="assets/images/dokumentasi-2025/doc2025-muat-truk-1.jpg" target="_blank">
+            <img src="assets/images/dokumentasi-2025/doc2025-muat-truk-1.jpg" alt="Proses muat hasil panen ke truk">
+          </a>
         </div>
+        <p class="doc-caption">Dokumentasi kegiatan Pengmas 2025: Pemberdayaan Perempuan dan Strategi Adaptasi Perubahan Iklim melalui Kegiatan Kebun Bibit Rumput Laut di Kabupaten Sabu Raijua.</p>
       </div>
 
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
+      <ol class="name-list">
+        <li>
+          <span class="num">1</span>
+          <div class="info">
+            <b>Prof. Dr.rer.nat. Mutiara Rachmat Putri, S.Si., M.Si.</b>
+            <span>Guru Besar, Kelompok Keahlian Oseanografi Lingkungan dan Terapan, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div class="info">
+            <b>Desy Amalia Hidayati, S.Si., M.Si.</b>
+            <span>Dosen Program Studi Ilmu Kelautan, Universitas Nusa Cendana</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div class="info">
+            <b>Iwan Pramesti Anwar, S.Si., M.Si.</b>
+            <span>Dosen Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <div class="info">
+            <b>Agus Setiawan, S.Si., M.Si.</b>
+            <span>Peneliti, Badan Riset dan Inovasi Nasional (BRIN)</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">5</span>
+          <div class="info">
+            <b>Freshty Yulia Arthatiani, S.Pi., M.Si.</b>
+            <span>Peneliti, Kementerian Kelautan dan Perikanan Republik Indonesia</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">6</span>
+          <div class="info">
+            <b>Muhammad Iqbal Musthofa</b>
+            <span>Mahasiswa Program Studi Oseanografi 2021, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">7</span>
+          <div class="info">
+            <b>Fandy Hidayat</b>
+            <span>Mahasiswa Program Studi Oseanografi 2020, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -238,44 +288,81 @@
       <span>PENGMAS 2026</span>
       <h2>Tim Pengmas 2026</h2>
     </div>
-    <div class="team-grid">
+    <div class="team-layout">
+      <div class="doc-empty">Dokumentasi kegiatan Pengmas 2026 akan ditambahkan setelah program berlangsung.</div>
 
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">Foto anggota</div>
-        <div class="member-info">
-          <div class="member-name">Nama Anggota</div>
-          <div class="member-role">Peran / Jabatan</div>
-          <div class="member-bio">Tulis deskripsi singkat peran atau kontribusinya di sini.</div>
-        </div>
-      </div>
-
+      <ol class="name-list">
+        <li>
+          <span class="num">1</span>
+          <div class="info">
+            <b>Prof. Dr.rer.nat. Mutiara Rachmat Putri, S.Si., M.Si.</b>
+            <span>Guru Besar, Kelompok Keahlian Oseanografi Lingkungan dan Terapan, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div class="info">
+            <b>Desy Amalia Hidayati, S.Si., M.Si.</b>
+            <span>Dosen Program Studi Ilmu Kelautan, Universitas Nusa Cendana</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div class="info">
+            <b>Iwan Pramesti Anwar, S.Si., M.Si.</b>
+            <span>Dosen Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <div class="info">
+            <b>Agus Setiawan, S.Si., M.Si.</b>
+            <span>Peneliti, Badan Riset dan Inovasi Nasional (BRIN)</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">5</span>
+          <div class="info">
+            <b>Freshty Yulia Arthatiani, S.Pi., M.Si.</b>
+            <span>Peneliti, Kementerian Kelautan dan Perikanan Republik Indonesia</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">6</span>
+          <div class="info">
+            <b>Kamaluddin Kasim, S.Pi., M.Sc</b>
+            <span>Peneliti, Kementerian Kelautan dan Perikanan Republik Indonesia</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">7</span>
+          <div class="info">
+            <b>Sabitha Chairunnisa Syahrial</b>
+            <span>Mahasiswa Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">8</span>
+          <div class="info">
+            <b>Immanuel Junior Oloan Tambun</b>
+            <span>Mahasiswa Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">9</span>
+          <div class="info">
+            <b>Fandy Hidayat</b>
+            <span>Mahasiswa Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">10</span>
+          <div class="info">
+            <b>Muhammad Zeva Radityaputra</b>
+            <span>Alumni Program Studi Oseanografi, Institut Teknologi Bandung</span>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
