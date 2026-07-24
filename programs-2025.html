@@ -144,7 +144,7 @@
 
   /* PENGMAS 2025 bento feature grid */
   .bento-grid{
-    display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:repeat(2,1fr);
+    display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:repeat(2,1fr);
     gap:18px; height:440px;
   }
   @media (max-width:720px){
@@ -167,6 +167,9 @@
   .bento-card.card-eko::before{ background-image:url('assets/images/card-ekosistem.jpg'); background-size:cover; background-position:center; }
   .bento-card.card-puzzle::before{ background-image:url('assets/images/card-puzzle.png'); background-size:cover; background-position:center; background-color:#FFFFFF; }
   .bento-card.card-draw::before{ background-image:url('assets/images/card-menggambar.jpg'); background-size:cover; background-position:center; }
+  .bento-card.card-doc::before{ background-image:url('assets/images/dokumentasi-2025/doc2025-tim-sortir.jpg'); background-size:cover; background-position:center; }
+  .bento-card.wide{ grid-column: span 2; }
+  @media (max-width:720px){ .bento-card.wide{ grid-column: span 1; } }
   .bento-card .icon-watermark{
     position:absolute; top:16px; right:18px; font-size:42px; opacity:0.3; z-index:1;
   }
@@ -174,6 +177,38 @@
     position:relative; z-index:2;
     font-family:var(--font-display); font-weight:700; font-size:19px;
     letter-spacing:0.5px; text-transform:uppercase; text-shadow:0 2px 10px rgba(0,0,0,0.4);
+  }
+
+  /* FIELD STORY / ARTIKEL PENGMAS 2025 */
+  .field-story{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+    margin-bottom:56px;
+  }
+  @media (max-width:820px){ .field-story{ grid-template-columns:1fr; } }
+  .field-story .photo{
+    border-radius:16px; overflow:hidden; box-shadow:0 20px 40px rgba(11,26,58,0.15);
+  }
+  .field-story .photo img{ width:100%; height:340px; object-fit:cover; display:block; }
+  .field-story .text h3{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(20px,2.4vw,26px);
+    color:var(--navy); margin-bottom:14px; line-height:1.3;
+  }
+  .field-story .text p{ font-size:14.5px; line-height:1.85; color:#3C4A5C; margin-bottom:14px; }
+  .field-story .text ul.fact-mini{ list-style:none; margin:18px 0; }
+  .field-story .text ul.fact-mini li{
+    font-size:13.5px; color:#3C4A5C; padding:8px 0 8px 22px; position:relative;
+    border-top:1px solid var(--line);
+  }
+  .field-story .text ul.fact-mini li:before{
+    content:"🌊"; position:absolute; left:0; top:8px; font-size:12px;
+  }
+  .field-story .refs{
+    margin-top:20px; padding-top:16px; border-top:1px dashed var(--line);
+  }
+  .field-story .refs b{ display:block; font-size:12.5px; color:var(--navy); margin-bottom:8px; }
+  .field-story .refs a{
+    display:inline-block; font-size:12.5px; color:var(--blue-mid); margin:0 10px 8px 0;
+    text-decoration:underline; text-underline-offset:2px;
   }
 
   footer{
@@ -216,6 +251,38 @@
         <p>Pengmas 2025 menghadirkan modul edukasi interaktif seputar ekosistem laut Indonesia, mencakup pengenalan terumbu karang, padang lamun, hutan bakau, dan estuari, yang dikemas melalui aktivitas belajar sambil bermain berupa penjelajahan ekosistem, permainan puzzle, dan kegiatan menggambar. Program ini disusun untuk kegiatan Pengabdian Masyarakat 2025, dengan tujuan menumbuhkan kepedulian dan literasi kelautan sejak dini.</p>
       </div>
 
+      <!-- ARTIKEL / KISAH LAPANGAN PENGMAS 2025 -->
+      <div class="field-story">
+        <div class="photo">
+          <img src="assets/images/dokumentasi-2025/doc2025-petani-tambak.jpg" alt="Petani rumput laut perempuan di tambak Desa Bodae, Sabu Raijua">
+        </div>
+        <div class="text">
+          <span class="eyebrow-small">KISAH DARI LAPANGAN</span>
+          <h3>Pemberdayaan Perempuan Pesisir Sabu Raijua lewat Budidaya Rumput Laut Adaptif Iklim</h3>
+          <p>Selain modul edukasi ekosistem laut, Pengmas 2025 juga menjangkau langsung masyarakat pesisir melalui program “Pemberdayaan Perempuan melalui Kebun Bibit Rumput Laut Adaptif terhadap Perubahan Iklim” di Desa Bodae, Kecamatan Sabu Timur, Kabupaten Sabu Raijua, NTT. Kegiatan yang berjalan di bawah skema PPM Bottom-Up ITB 2025 ini dipimpin oleh Prof. Dr. Mutiara Rachmat Putri dari Kelompok Keahlian Oseanografi Lingkungan dan Terapan FITB ITB, bersama tim dosen dan mahasiswa ITB serta mitra dari Universitas Nusa Cendana.</p>
+          <p>Desa Bodae dipilih karena dahulu dikenal sebagai sentra rumput laut, namun produksinya menurun drastis pascabadai Seroja pada 2021. Tim memperkenalkan bibit unggul <em>Eucheuma cottonii</em> varian "sakol" yang lebih tahan terhadap perubahan suhu air laut dan lebih stabil produktivitasnya, dengan tahap awal berupa penyerahan 500 kilogram bibit kepada kelompok tani perempuan Mira Kaddi Hari yang beranggotakan 10 kepala keluarga.</p>
+          <ul class="fact-mini">
+            <li>Lokasi: Desa Bodae, Kecamatan Sabu Timur, Sabu Raijua, NTT</li>
+            <li>Kelompok mitra: Tani perempuan Mira Kaddi Hari (10 KK)</li>
+            <li>Dukungan awal: 500 kg bibit rumput laut varian "sakol"</li>
+            <li>Dihadiri Wakil Bupati Sabu Raijua, Camat Sabu Timur, dan Dinas Kelautan &amp; Perikanan setempat</li>
+          </ul>
+          <p>Kegiatan ini menjadi bagian nyata dari misi Pengmas 2025 dalam memperkuat literasi dan ketahanan pesisir, sekaligus mendorong peran perempuan dalam ekonomi kelautan yang berkelanjutan.</p>
+
+          <div class="refs">
+            <b>Liputan &amp; publikasi terkait:</b>
+            <a href="https://itb.ac.id/berita/itb-berdayakan-perempuan-pesisir-sabu-raijua-lewat-budidaya-rumput-laut-adaptif-terhadap-perubahan-iklim/62737" target="_blank" rel="noopener">Berita ITB</a>
+            <a href="https://pengabdian.drpm.itb.ac.id/information/adaptasi_iklim_lewat_perempuan_pesisir" target="_blank" rel="noopener">DRPM ITB</a>
+            <a href="https://www.facebook.com/100090882824562/posts/661385583567530/?mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://timexkupang.fajar.co.id/2025/06/14/bodae-jadi-rumah-pembibitan-rumput-laut/" target="_blank" rel="noopener">Timex Kupang (1)</a>
+            <a href="https://timexkupang.fajar.co.id/2025/06/17/wabup-minta-tim-itb-kembangkan-rumput-laut-di-raijua/" target="_blank" rel="noopener">Timex Kupang (2)</a>
+            <a href="https://epaper.mediaindonesia.com/detail/mengikat-bibit-ke-tali-menghadapi-badai" target="_blank" rel="noopener">Media Indonesia (1)</a>
+            <a href="https://epaper.mediaindonesia.com/detail/survei-oseanografi-dan-pemilihan-bibit" target="_blank" rel="noopener">Media Indonesia (2)</a>
+            <a href="https://www.instagram.com/p/DL1LEtoPO0D/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+
       <div class="bento-grid">
         <a class="bento-card large card-eko" href="programs-2025/Ekosistem.html">
           <h3>Ekosistem Laut</h3>
@@ -225,6 +292,9 @@
         </a>
         <a class="bento-card card-draw" href="programs-2025/Drawing.html">
           <h3>Menggambar</h3>
+        </a>
+        <a class="bento-card wide card-doc" href="programs-2025/dokumentasi.html">
+          <h3>Dokumentasi</h3>
         </a>
       </div>
     </div>

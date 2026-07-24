@@ -67,6 +67,40 @@
   }
   a.back{ display:inline-block; margin-top:20px; color:var(--blue-mid); font-weight:600; font-size:14px; }
   footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
+
+  /* SURVEI AWAL */
+  section.survey{ max-width:1100px; text-align:left; padding-bottom:60px; }
+  .survey-head{ text-align:center; max-width:640px; margin:0 auto 48px; }
+  .survey-head span{
+    display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:var(--blue-mid);
+    margin-bottom:14px;
+  }
+  .survey-head h2{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(24px,3vw,32px); color:var(--navy);
+  }
+  .survey-head p{ font-size:14.5px; color:#7A8AA0; line-height:1.75; margin-top:14px; }
+  .survey-meta{
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:18px;
+  }
+  .survey-meta span{
+    background:#EEF3FC; color:var(--blue-mid); font-size:12.5px; font-weight:600;
+    padding:7px 14px; border-radius:20px;
+  }
+  .survey-gallery{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;
+  }
+  @media (max-width:720px){ .survey-gallery{ grid-template-columns:1fr; } }
+  .survey-card{
+    border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#F7FAFD;
+  }
+  .survey-card img{ width:100%; height:320px; object-fit:cover; display:block; }
+  .survey-card .cap{ padding:14px 16px; font-size:13px; color:#5A6B7D; line-height:1.6; }
+  .survey-video{
+    border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#000;
+    margin-bottom:14px;
+  }
+  .survey-video video{ width:100%; max-height:520px; display:block; background:#000; }
+  .survey-caption{ text-align:center; font-size:12.5px; color:#7A8AA0; line-height:1.6; }
 </style>
 </head>
 <body>
@@ -90,11 +124,37 @@
     <h1>Monitoring & Evaluasi</h1>
   </div>
 
-  <section>
-    <div class="coming-soon">
-      <div class="icon-circle">🚧</div>
-      <h2>Coming Soon</h2>
-      <p>Konten Monitoring & Evaluasi untuk Pengmas 2026 sedang disiapkan. Nantikan pembaruannya di sini.</p>
+  <section class="survey">
+    <div class="survey-head">
+      <span>SUB KEGIATAN</span>
+      <h2>Survei Awal</h2>
+      <p>Tahap survei awal dilakukan untuk memetakan lokasi peneluran dan kondisi sarang penyu di pesisir sebagai dasar penyusunan rencana monitoring dan evaluasi Pengmas 2026.</p>
+      <div class="survey-meta">
+        <span>📍 Kecamatan Sabu Liae, Sabu Raijua, NTT</span>
+        <span>🗓️ 7 Juli 2026</span>
+      </div>
+    </div>
+
+    <div class="survey-gallery">
+      <div class="survey-card">
+        <img src="images/survei-awal/survei-awal-lokasi-sabu.jpg" alt="Tim survei di lokasi pantai peneluran penyu, Kecamatan Sabu Liae">
+        <div class="cap">Tim melakukan penyusuran pantai di Kecamatan Sabu Liae untuk mengidentifikasi titik-titik sarang penyu.</div>
+      </div>
+      <div class="survey-card">
+        <img src="images/survei-awal/survei-awal-sarang-telur.jpg" alt="Sarang telur penyu yang ditemukan saat survei awal">
+        <div class="cap">Salah satu sarang telur penyu yang berhasil ditemukan dan didata pada survei awal.</div>
+      </div>
+    </div>
+
+    <div class="survey-video">
+      <video controls preload="metadata" poster="images/survei-awal/survei-awal-sarang-telur.jpg">
+        <source src="images/survei-awal/survei-awal-dokumentasi.mp4" type="video/mp4">
+        Browser Anda tidak mendukung pemutaran video.
+      </video>
+    </div>
+    <p class="survey-caption">Dokumentasi video kegiatan survei awal peneluran penyu di pesisir Kecamatan Sabu Liae, Sabu Raijua, NTT.</p>
+
+    <div style="text-align:center;">
       <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
     </div>
   </section>
