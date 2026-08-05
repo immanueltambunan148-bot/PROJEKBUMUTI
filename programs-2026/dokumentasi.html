@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentasi & Liputan | Pengmas 2026 | Indonesia Ocean Literacy</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-bright:#2E86EB; --blue-mid:#1E4FAE; --blue-deep:#152D63; --navy:#0B1A3A;
+    --white:#FFFFFF; --ink:#0D1B2A; --line: rgba(13,27,42,0.1);
+    --font-display:'Space Grotesk', sans-serif; --font-body:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--font-body); color:var(--ink); background:var(--white);}
+  a{color:inherit; text-decoration:none;}
+  header{
+    display:flex; align-items:center; justify-content:space-between; padding:0 5vw; height:78px;
+    background:linear-gradient(90deg, var(--blue-bright) 0%, var(--blue-mid) 55%, var(--blue-deep) 100%);
+    position:sticky; top:0; z-index:50;
+  }
+  .logo{ font-family:var(--font-display); font-weight:700; font-size:16px; letter-spacing:1px; color:var(--white); }
+  nav ul{list-style:none; display:flex; gap:30px;}
+  nav a{color:var(--white); font-size:14px; font-weight:500;}
+  .nav-toggle{ display:none; }
+  @media (max-width:560px){
+    .nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; gap:5px;
+      position:absolute; right:5vw; top:50%; transform:translateY(-50%);
+      background:none; border:none; cursor:pointer; padding:8px; z-index:70;
+    }
+    .nav-toggle span{ display:block; width:22px; height:2px; background:var(--white); }
+    nav ul{
+      display:none; position:absolute; top:78px; left:0; right:0;
+      flex-direction:column; gap:0; margin:0; padding:8px 0;
+      background:var(--navy); box-shadow:0 16px 32px rgba(0,0,0,0.3); z-index:60;
+    }
+    nav.nav-open ul{ display:flex; }
+    nav ul > li{ width:100%; }
+    nav ul > li > a{ display:flex; align-items:center; padding:14px 24px; font-size:15px; }
+  }
+  .banner{
+    background:linear-gradient(180deg, var(--navy) 0%, var(--blue-deep) 100%);
+    padding:56px 5vw; text-align:center; color:var(--white);
+  }
+  .banner span{ display:block; font-size:12px; letter-spacing:3px; font-weight:600; color:#8FC2FF; margin-bottom:14px; }
+  .banner h1{ font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,42px); }
+  section{ padding:80px 5vw; max-width:800px; margin:0 auto; }
+  .intro{ text-align:center; margin-bottom:40px; color:#3C4A5C; font-size:15px; line-height:1.7; }
+  .doc-list{ display:flex; flex-direction:column; gap:16px; }
+  .doc-item{
+    display:flex; align-items:center; gap:18px;
+    border:1.5px solid var(--line); border-radius:14px; padding:20px 22px;
+    background:#F7FAFD; transition:transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .doc-item:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(11,26,58,0.1); border-color:var(--blue-bright); }
+  .doc-icon{
+    flex-shrink:0; width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-bright), var(--blue-deep));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;
+  }
+  .doc-info{ flex:1; }
+  .doc-info h3{ font-family:var(--font-display); font-size:15.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .doc-info p{ font-size:13px; color:#7A8AA0; line-height:1.5; }
+  .doc-info .doc-source{ display:inline-block; margin-top:6px; font-size:11.5px; font-weight:600; color:var(--blue-mid); letter-spacing:.3px; text-transform:uppercase; }
+  .doc-action{
+    flex-shrink:0; font-size:13px; font-weight:600; color:var(--blue-mid);
+    padding:9px 18px; border:1.5px solid var(--blue-mid); border-radius:999px; white-space:nowrap;
+  }
+  a.back{ display:inline-block; margin-top:32px; color:var(--blue-mid); font-weight:600; font-size:14px; text-align:center; }
+  .back-wrap{ text-align:center; }
+  footer{ padding:30px 5vw; border-top:1px solid var(--line); text-align:center; font-size:12px; color:#8A96A3; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">INDONESIA OCEAN LITERACY</div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../programs-2026.html">Pengmas 2026</a></li>
+        <li><a href="../contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Buka menu navigasi" onclick="this.closest('header').querySelector('nav').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="banner">
+    <span>PENGMAS 2026</span>
+    <h1>Dokumentasi & Liputan</h1>
+  </div>
+
+  <section>
+    <p class="intro">Liputan media mengenai program Monitoring dan Konservasi Penyu Berbasis Digital di Desa Eilogo, Sabu Raijua, NTT.</p>
+
+    <div class="doc-list">
+      <a class="doc-item" href="https://wartatrans.com/kkp-dan-itb-kembangkan-monitoring-dan-konservasi-penyu-berbasis-semi-digital-di-sabu-raijua/" target="_blank" rel="noopener">
+        <div class="doc-icon">📰</div>
+        <div class="doc-info">
+          <h3>KKP dan ITB Kembangkan Monitoring dan Konservasi Penyu Berbasis Semi-Digital di Sabu Raijua</h3>
+          <p>Liputan program monitoring dan konservasi penyu semi-digital di Desa Eilogo, Sabu Raijua</p>
+          <span class="doc-source">Wartatrans.com</span>
+        </div>
+        <div class="doc-action">Baca</div>
+      </a>
+
+      <a class="doc-item" href="https://www.panennews.com/maritim/amp/1682909630/kkp-dan-itb-gunakan-aplikasi-tanpa-internet-untuk-monitoring-penyu-di-daerah-3t" target="_blank" rel="noopener">
+        <div class="doc-icon">📰</div>
+        <div class="doc-info">
+          <h3>KKP dan ITB Gunakan Aplikasi Tanpa Internet untuk Monitoring Penyu di Daerah 3T</h3>
+          <p>Liputan penggunaan aplikasi KoboCollect untuk monitoring penyu di wilayah 3T</p>
+          <span class="doc-source">PanenNews.com</span>
+        </div>
+        <div class="doc-action">Baca</div>
+      </a>
+
+      <a class="doc-item" href="https://www.baliwara.com/nasional/amp/90117449565/kkp-dan-itb-kolaborasi-kembangkan-konservasi-penyu-berbasis-semi-digital-di-sabu-raijua" target="_blank" rel="noopener">
+        <div class="doc-icon">📰</div>
+        <div class="doc-info">
+          <h3>KKP dan ITB Kolaborasi Kembangkan Konservasi Penyu Berbasis Semi-Digital di Sabu Raijua</h3>
+          <p>Liputan kolaborasi KKP dan ITB dalam konservasi penyu berbasis semi-digital</p>
+          <span class="doc-source">Baliwara.com</span>
+        </div>
+        <div class="doc-action">Baca</div>
+      </a>
+
+      <a class="doc-item" href="https://m.antaranews.com/amp/berita/5674099/kkp-dan-itb-kembangkan-monitoring-penyu-semidigital-di-wilayah-3t" target="_blank" rel="noopener">
+        <div class="doc-icon">📰</div>
+        <div class="doc-info">
+          <h3>KKP dan ITB Kembangkan Monitoring Penyu Semidigital di Wilayah 3T</h3>
+          <p>Liputan sistem monitoring penyu semi-digital untuk wilayah tertinggal, terdepan, dan terluar</p>
+          <span class="doc-source">ANTARA News</span>
+        </div>
+        <div class="doc-action">Baca</div>
+      </a>
+
+      <a class="doc-item" href="https://kupang.tribunnews.com/regional-ntt/973714/ppm-itb-di-sabu-raijua-warga-dilatih-lindungi-penyu-berbasis-digital" target="_blank" rel="noopener">
+        <div class="doc-icon">📰</div>
+        <div class="doc-info">
+          <h3>PPM ITB di Sabu Raijua, Warga Dilatih Lindungi Penyu Berbasis Digital</h3>
+          <p>Liputan sosialisasi dan pelatihan monitoring penyu bersama Pokmaswas di Sabu Raijua</p>
+          <span class="doc-source">Tribun Kupang</span>
+        </div>
+        <div class="doc-action">Baca</div>
+      </a>
+    </div>
+
+    <div class="back-wrap">
+      <a class="back" href="../programs-2026.html">&larr; Kembali ke Pengmas 2026</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Indonesia Ocean Literacy - Program Studi Oseanografi, FITB ITB
+  </footer>
+</body>
+</html>
